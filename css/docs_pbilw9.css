@@ -1,0 +1,522 @@
+/* Generated into /css/docs.css by web/docsgen/build.js — edit web/docsgen/assets/docs.css instead.
+   Uses the site's own Volt Carbon variables from style.css; it defines no colours of its own. */
+
+.docs-page main { padding-top: 24px; }
+
+.docs-page .container { max-width: var(--container-max); margin: 0 auto; padding: 0 20px; }
+
+.visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- the three-column docs shell ----------
+   Chapter list, the reading column, and "on this page". The middle column is the only one that
+   scrolls with the document; both rails are sticky, so the reader never loses either the place
+   they are in the guide or the place they are on the page.
+
+   minmax(0, …) on the middle column is load-bearing: a grid track's default min-width is auto,
+   which is the width of its widest UNBREAKABLE child. One long line in a <pre> would otherwise
+   push the whole column wider than the viewport and put a horizontal scrollbar on the page,
+   instead of scrolling inside the code block where it belongs. */
+.docs-shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr) 232px;
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 28px;
+    align-items: start;
+}
+
+/* ---------- left rail: every chapter ----------
+   Height is the whole design problem here. Measured on a 820px-tall viewport, the list stood at
+   753px against 716px of room WITH ONLY THE CURRENT SECTION OPEN — so the common case already had
+   a nested scrollbar, and a reader who opened two more sections got 2108px of it. A scroll area
+   inside a sticky rail is the genuinely infuriating kind: the wheel does nothing to the page, and
+   the chapter you are actually reading can sit outside the visible slice.
+
+   Three things keep it civil: the rhythm below is tight enough that one open section fits without
+   scrolling at all on a normal laptop, overscroll-behavior stops a scroll that reaches the end of
+   the list from yanking the page, and docs.js scrolls the current chapter into view on load so
+   the highlight is never hidden when the list does overflow. */
+.docs-side {
+    position: sticky; top: 84px; max-height: calc(100vh - 100px);
+    overflow-y: auto; overscroll-behavior: contain; padding: 4px 0 24px;
+    scrollbar-width: thin; scrollbar-color: var(--border-color) transparent;
+}
+.docs-side::-webkit-scrollbar { width: 8px; }
+.docs-side::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+.docs-side::-webkit-scrollbar-track { background: transparent; }
+/* A soft edge at the bottom when there is more list below the fold — otherwise an overflowing
+   list looks exactly like one that simply ends there. */
+.docs-side[data-overflow] { mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent 100%); }
+.docs-side-head { padding-bottom: 10px; margin-bottom: 4px; border-bottom: 1px solid var(--border-light); }
+.docs-side-home {
+    display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-muted); text-decoration: none; margin-bottom: 8px;
+}
+.docs-side-home:hover { color: var(--primary); }
+.docs-filter { display: block; }
+.docs-filter input {
+    width: 100%; font: 400 13.5px/1.4 var(--font-primary); color: var(--text-primary);
+    background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px;
+    padding: 9px 11px;
+}
+.docs-filter input:focus { outline: none; border-color: var(--primary); }
+.docs-filter input::placeholder { color: var(--text-muted); }
+.docs-filter-empty { font-size: 12.5px; color: var(--text-muted); margin: 8px 0 0; }
+
+.docs-side-group { border-bottom: 1px solid var(--border-light); }
+.docs-side-group > summary {
+    list-style: none; cursor: pointer; padding: 8px 2px;
+    font-family: var(--font-display); font-size: 13px; color: var(--text-primary);
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.docs-side-group > summary::-webkit-details-marker { display: none; }
+.docs-side-group > summary::after {
+    content: '+'; font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); flex: 0 0 auto;
+}
+.docs-side-group[open] > summary::after { content: '\2212'; }
+.docs-side-group > summary:hover { color: var(--primary); }
+.docs-side-count {
+    margin-left: auto; margin-right: 4px; font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 999px; padding: 1px 6px;
+}
+.docs-side-group ul { list-style: none; margin: 0 0 8px; padding: 0; }
+.docs-side-group li { margin: 0; }
+.docs-side-group li a {
+    display: block; padding: 5px 10px; margin-left: 2px;
+    font-size: 13px; line-height: 1.4; color: var(--text-secondary); text-decoration: none;
+    border-left: 2px solid var(--border-light); border-radius: 0 6px 6px 0;
+}
+.docs-side-group li a:hover { color: var(--text-primary); background: var(--bg-card); border-left-color: var(--text-muted); }
+/* The chapter you are reading, marked in the list rather than only in the breadcrumb. */
+.docs-side-group li a[aria-current="page"] {
+    color: var(--primary); background: var(--bg-card); border-left-color: var(--primary); font-weight: 600;
+}
+
+/* ---------- right rail: on this page ----------
+   Same containment as the chapter list, and for the same reason. The in-app-purchases chapter has
+   34 steps: 1165px of contents against 664px of room on a 768px-tall screen. Without
+   overscroll-behavior, a wheel that reaches the end of that list keeps going and takes the whole
+   article with it — the reader was looking at the map and the page moved under them. */
+.docs-rail {
+    position: sticky; top: 84px; max-height: calc(100vh - 100px);
+    overflow-y: auto; overscroll-behavior: contain; padding: 4px 0 24px;
+    scrollbar-width: thin; scrollbar-color: var(--border-color) transparent;
+}
+.docs-rail::-webkit-scrollbar { width: 8px; }
+.docs-rail::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+.docs-rail::-webkit-scrollbar-track { background: transparent; }
+.docs-rail[data-overflow] { mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent 100%); }
+.docs-rail:empty, .docs-rail-inner:empty { display: none; }
+.docs-rail-title {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 10px;
+}
+.docs-rail ol { list-style: none; margin: 0; padding: 0; }
+.docs-rail li { margin: 0; }
+.docs-rail a {
+    display: block; padding: 5px 0 5px 12px; font-size: 12.5px; line-height: 1.45;
+    color: var(--text-muted); text-decoration: none; border-left: 2px solid var(--border-light);
+}
+.docs-rail a:hover { color: var(--text-primary); border-left-color: var(--text-muted); }
+/* Scroll-spy: which step is on screen right now. */
+.docs-rail a.is-current { color: var(--primary); border-left-color: var(--primary); }
+.docs-rail .lvl-h2 > a { font-weight: 600; color: var(--text-secondary); }
+
+/* Mobile drawer trigger, hidden on desktop where both rails are always visible. */
+.docs-side-toggle { display: none; }
+
+/* ---------- breadcrumb ---------- */
+.doc-crumbs {
+    padding: 8px 0 0;
+    font-size: 13px; color: var(--text-muted);
+}
+.doc-crumbs a { color: var(--text-secondary); text-decoration: none; }
+.doc-crumbs a:hover { color: var(--primary); }
+.doc-crumbs span { margin: 0 6px; }
+
+/* ---------- article ---------- */
+.doc-article { max-width: 100%; margin: 0; padding: 24px 0 64px; }
+
+.doc-head { padding-bottom: 24px; border-bottom: 1px solid var(--border-color); margin-bottom: 32px; }
+.doc-kicker {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--primary); margin-bottom: 10px;
+}
+.doc-head h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin-bottom: 12px; }
+.doc-lede { font-size: 18px; line-height: 1.6; color: var(--text-secondary); max-width: 68ch; }
+
+.pv-label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 6px;
+}
+.pd { border-bottom: 1px dotted var(--border-color); }
+
+/* ---------- contents ---------- */
+.doc-toc {
+    max-width: 880px; margin: 0 auto 32px; padding: 18px 22px;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius);
+}
+.doc-toc-title {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 10px;
+}
+.doc-toc ol { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 32px; }
+.doc-toc li { break-inside: avoid; margin-bottom: 6px; font-size: 14px; }
+.doc-toc a { color: var(--text-secondary); text-decoration: none; }
+.doc-toc a:hover { color: var(--primary); }
+
+/* ---------- body ----------
+   Two deliberate numbers here.
+
+   MEASURE: prose is capped at 62ch, which renders as ~72 real characters a line. Not 72ch: the
+   `ch` unit is the width of the "0" glyph, and in a proportional face that is noticeably wider
+   than the average letter, so a 72ch cap measured 83 characters on this font — the cap was on and
+   the line was still too long. Measured, not assumed. Before any cap the text ran the full 840px
+   column at 96 characters, well past the 60-75 that every typography manual puts at comfortable,
+   and the reason a long chapter read as a wall. Code, tables and callouts are exempt below:
+   those are scanned rather than read, and a wrapped line of code is worse than a wide one.
+
+   COLOUR: body text is --text-primary, not --text-secondary. The whole body used to be the muted
+   grey meant for captions (#A1A1AA on #0A0A0B), which is fine for a line and tiring for a page. */
+.doc-body { font-size: 16.5px; line-height: 1.75; color: var(--text-primary); }
+.doc-body > p, .doc-body > ul, .doc-body > ol,
+.doc-step > p, .doc-step > ul, .doc-step > ol,
+.pv > p, .pv > ul, .pv > ol,
+.doc-note p, .doc-warn p { max-width: 62ch; }
+.doc-body p { margin-bottom: 18px; }
+.doc-body strong { color: var(--text-primary); font-weight: 650; }
+.doc-body a { color: var(--secondary); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.doc-body a:hover { text-decoration: underline; }
+
+/* Steps are the unit of this guide, so they get real separation rather than a hairline. */
+.doc-step { padding: 30px 0; border-top: 1px solid var(--border-light); }
+.doc-step:first-child { border-top: none; padding-top: 8px; }
+.doc-body h3 {
+    font-family: var(--font-display); font-size: 21px; line-height: 1.3; color: var(--text-primary);
+    margin-bottom: 14px; scroll-margin-top: 90px; display: flex; align-items: baseline; gap: 12px;
+    letter-spacing: -.01em;
+}
+/* A filled number reads as a step in a sequence; the old outlined box read as a tag. */
+.step-n {
+    flex: 0 0 auto; font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    color: var(--bg-body, #0A0A0B); background: var(--primary);
+    border-radius: 7px; min-width: 26px; text-align: center; padding: 4px 0;
+}
+/* The step you arrived at from a link or the rail, briefly named so a jump is not disorienting. */
+.doc-step:target > h3, .doc-step:has(> h3:target) > h3 { color: var(--primary); }
+.anchor { opacity: 0; margin-left: 4px; color: var(--text-muted); text-decoration: none; font-weight: 400; }
+.doc-body h2:hover .anchor, .doc-body h3:hover .anchor { opacity: 1; }
+
+.doc-subhead {
+    font-family: var(--font-display); font-size: 26px; color: var(--text-primary);
+    margin: 48px 0 6px; padding-top: 32px; border-top: 2px solid var(--border-color); scroll-margin-top: 90px;
+}
+.doc-subhead-note { color: var(--text-muted); margin-bottom: 20px; }
+
+.doc-body ul, .doc-body ol { margin: 0 0 16px 22px; }
+.doc-body li { margin-bottom: 7px; }
+
+.doc-body code {
+    font-family: var(--font-mono); font-size: .9em; color: var(--accent);
+    background: var(--bg-input); border: 1px solid var(--border-light); border-radius: 4px; padding: 1px 5px;
+}
+.doc-code, .doc-sample {
+    position: relative; margin: 0 0 18px; padding: 16px 18px; overflow-x: auto;
+    background: var(--bg-input); border: 1px solid var(--border-color); border-left: 3px solid var(--primary);
+    border-radius: 8px;
+}
+.doc-sample { border-left-color: var(--border-color); }
+.doc-code code, .doc-sample code {
+    background: none; border: none; padding: 0; color: var(--text-primary);
+    font-size: 13.5px; line-height: 1.65; white-space: pre;
+}
+.doc-snippet { margin: 0 0 22px; }
+.doc-snippet figcaption {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 6px;
+}
+.copy-btn {
+    position: absolute; top: 8px; right: 8px; font: 500 11px/1 var(--font-mono);
+    color: var(--text-muted); background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 5px; padding: 5px 9px; cursor: pointer;
+}
+.copy-btn:hover { color: var(--text-primary); border-color: var(--primary); }
+.copy-btn.copied { color: var(--primary); }
+
+.doc-note, .doc-warn {
+    margin: 0 0 18px; padding: 14px 18px; border-radius: 8px;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid var(--secondary);
+}
+.doc-warn { border-left-color: var(--warning); }
+.doc-note p:last-child, .doc-warn p:last-child { margin-bottom: 0; }
+
+.doc-table { margin: 0 0 26px; }
+.doc-table figcaption {
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 8px;
+}
+.table-scroll { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; }
+.doc-table table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.doc-table th, .doc-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+.doc-table th { background: var(--bg-input); color: var(--text-primary); font-weight: 600; white-space: nowrap; }
+.doc-table tr:last-child td { border-bottom: none; }
+
+.doc-link a { font-weight: 600; }
+
+.doc-foot { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 14px; color: var(--text-muted); }
+.doc-updated { font-family: var(--font-mono); font-size: 12px; margin-top: 6px; }
+
+/* ---------- previous / next chapter ----------
+   The end of a chapter used to be a dead end. */
+.doc-seq-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.doc-seq {
+    display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; text-decoration: none;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius);
+    transition: border-color .15s ease;
+}
+.doc-seq:hover { border-color: var(--primary); }
+.doc-seq-empty { background: none; border: none; }
+.doc-seq-label {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-muted);
+}
+.doc-seq-title { font-family: var(--font-display); font-size: 15px; color: var(--text-primary); line-height: 1.35; }
+.doc-seq:hover .doc-seq-title { color: var(--primary); }
+.doc-seq-next { text-align: right; }
+
+/* ---------- hub ---------- */
+.doc-hero { padding: 48px 0 24px; background: var(--gradient-hero); border-bottom: 1px solid var(--border-color); }
+.doc-hero h1 { font-family: var(--font-display); font-size: clamp(30px, 6vw, 46px); margin-bottom: 14px; }
+.doc-hero .doc-lede { max-width: 76ch; }
+.doc-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 16px; }
+.doc-hero-note { font-size: 14px; color: var(--text-muted); max-width: 76ch; }
+
+.doc-index { padding: 40px 20px 72px; }
+.doc-index-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+.doc-index-section h2 { font-family: var(--font-display); font-size: 24px; margin-bottom: 6px; }
+.doc-index-blurb { color: var(--text-muted); margin-bottom: 20px; max-width: 72ch; }
+.doc-index-grid, .doc-related-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
+}
+.doc-card {
+    display: block; padding: 18px 20px; text-decoration: none;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius);
+    transition: border-color .15s ease, transform .15s ease;
+}
+.doc-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+.doc-card h3 { font-family: var(--font-display); font-size: 17px; color: var(--text-primary); margin-bottom: 8px; }
+.doc-card p { font-size: 14px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 10px; }
+.doc-card-badges { display: block; }
+
+.doc-related { padding: 40px 0 64px; border-top: 1px solid var(--border-color); }
+.doc-related h2 { font-family: var(--font-display); font-size: 20px; margin-bottom: 18px; }
+.doc-related-grid a { display: block; padding: 16px 18px; text-decoration: none; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); }
+.doc-related-grid a:hover { border-color: var(--primary); }
+.doc-related-grid h3 { font-family: var(--font-display); font-size: 16px; color: var(--text-primary); margin-bottom: 6px; }
+.doc-related-grid p { font-size: 13.5px; color: var(--text-secondary); }
+
+/* ---------- narrower screens ----------
+   Two breakpoints, because the two rails are not equally valuable. "On this page" is the first to
+   go: it duplicates what the reader can reach by scrolling. The chapter list survives longer,
+   collapsed into a details/summary the reader opens deliberately, because without it there is no
+   way to reach another chapter at all. */
+@media (max-width: 1200px) {
+    .docs-shell { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; }
+    .docs-rail { display: none; }
+}
+
+@media (max-width: 900px) {
+    .docs-shell { display: block; padding: 0 18px; }
+    .docs-side {
+        position: static; max-height: none; overflow: visible; padding: 0;
+        margin: 0 0 20px; background: var(--bg-card);
+        border: 1px solid var(--border-color); border-radius: var(--card-radius);
+    }
+    .docs-side-inner { padding: 14px 16px; }
+    /* Collapsed by default on a phone: 47 chapters above the article would bury it. */
+    .docs-side:not([data-open]) .docs-side-nav { display: none; }
+    .docs-side-toggle {
+        display: block; width: 100%; text-align: left; cursor: pointer;
+        font: 600 14px/1 var(--font-display); color: var(--text-primary);
+        background: none; border: none; padding: 4px 2px 12px;
+    }
+    .docs-side-toggle::after { content: ' \25BE'; color: var(--text-muted); }
+    .docs-side[data-open] .docs-side-toggle::after { content: ' \25B4'; }
+    .docs-side:not([data-open]) .docs-side-head { display: none; }
+}
+
+@media (max-width: 700px) {
+    .doc-toc ol { columns: 1; }
+    .doc-body h3 { font-size: 18px; }
+    .doc-code code, .doc-sample code { font-size: 12.5px; }
+    .doc-seq-nav { grid-template-columns: 1fr; }
+    .doc-seq-next { text-align: left; }
+}
+
+/* ---------- /docs/api ---------- */
+.api-article { max-width: 980px; }
+
+.api-index {
+    margin: 8px 0 40px; padding: 20px 22px;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius);
+    columns: 2; column-gap: 36px;
+}
+.api-index-family { break-inside: avoid; margin-bottom: 18px; }
+.api-index-family h3 {
+    font-family: var(--font-display); font-size: 14px; color: var(--text-primary);
+    margin-bottom: 6px; display: block;
+}
+.api-index-family h3 a { color: inherit; text-decoration: none; }
+.api-index-family h3 a:hover { color: var(--primary); }
+.api-count {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    border: 1px solid var(--border-color); border-radius: 999px; padding: 1px 7px; margin-left: 6px;
+}
+.api-index-family p { line-height: 2; margin: 0; }
+.api-index-family a code {
+    font-size: 12px; color: var(--text-secondary); background: var(--bg-input);
+    border-color: var(--border-light);
+}
+.api-index-family a { text-decoration: none; }
+.api-index-family a:hover code { color: var(--primary); border-color: var(--primary); }
+
+.api-family { padding-top: 36px; margin-bottom: 8px; border-top: 2px solid var(--border-color); scroll-margin-top: 90px; }
+.api-family > h2 { font-family: var(--font-display); font-size: 26px; color: var(--text-primary); margin-bottom: 6px; }
+.api-family-blurb { color: var(--text-muted); margin-bottom: 22px; max-width: 74ch; }
+
+.api-method { padding: 18px 0; border-top: 1px solid var(--border-light); scroll-margin-top: 90px; }
+.api-method:first-of-type { border-top: none; }
+.api-method h3 { font-size: 17px; margin-bottom: 10px; }
+.api-method h3 code {
+    background: none; border: none; padding: 0; color: var(--primary);
+    font-size: 17px; font-weight: 500;
+}
+.api-doc p:last-child { margin-bottom: 0; }
+.api-from-group {
+    font-size: 13px; color: var(--text-muted); margin-top: 8px;
+    padding-left: 10px; border-left: 2px solid var(--border-color);
+}
+
+.api-index ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.api-index li { display: block; margin: 0; min-width: 0; max-width: 100%; }
+.api-index li code { display: inline-block; max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+.api-index li[hidden], .api-index-family[hidden] { display: none; }
+.api-filter { display: block; margin: 4px 0 12px; }
+.api-filter input {
+    width: 100%; padding: 12px 14px; font: inherit; color: var(--text-primary);
+    background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px;
+}
+.api-filter input:focus { outline: 2px solid var(--primary); outline-offset: 1px; border-color: var(--primary); }
+
+.api-kind {
+    font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--text-muted); vertical-align: middle;
+    border: 1px solid var(--border-color); border-radius: 999px; padding: 2px 8px; margin-left: 8px;
+}
+.api-kind-helper, .api-kind-web { color: var(--primary); border-color: var(--primary); }
+.api-sig { border-left-color: var(--border-color); margin-bottom: 12px; }
+.api-sig code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.api-example { margin-top: 14px; }
+.api-example-label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-muted); margin: 0 0 8px;
+}
+.api-example .doc-snippet { margin-bottom: 14px; }
+.api-example table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.api-example th, .api-example td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+.api-example .table-scroll { margin: 0 0 16px; }
+
+.api-fam-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 22px; }
+.api-fam-nav a {
+    font-size: 13px; text-decoration: none; color: var(--text-secondary);
+    border: 1px solid var(--border-color); border-radius: 999px; padding: 5px 11px;
+}
+.api-fam-nav a:hover, .api-fam-nav a[aria-current="page"] { color: var(--primary); border-color: var(--primary); }
+.api-fam-nav .api-count { border: none; padding: 0; margin-left: 2px; }
+
+.doc-card-lead { border-color: var(--primary); }
+
+@media (max-width: 800px) {
+    .api-index { columns: 1; }
+}
+
+/* ---------- downloadable files offered by a step ---------- */
+.doc-downloads {
+    margin: 18px 0 6px; padding: 16px 18px;
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+}
+.doc-downloads-note {
+    font-size: 12.5px; color: var(--text-muted); margin: 0 0 12px;
+}
+.doc-download {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+    padding: 11px 14px; margin-bottom: 8px;
+    background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px;
+    transition: border-color .15s ease;
+}
+.doc-download:last-child { margin-bottom: 0; }
+.doc-download:hover { border-color: var(--primary); }
+.dl-icon { font-size: 18px; flex: 0 0 auto; }
+.dl-name {
+    flex: 1 1 auto; min-width: 0; font-family: var(--font-mono); font-size: 13px;
+    color: var(--text-primary); overflow-wrap: anywhere;
+}
+.doc-download:hover .dl-name { color: var(--primary); }
+.dl-meta {
+    flex: 0 0 auto; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+    letter-spacing: .04em; white-space: nowrap;
+}
+
+/* ---- search the whole guide (docs.js, docs/search-index.json) ---- */
+.docs-search { position: relative; margin: 0 0 18px; max-width: 760px; }
+.docs-search-box {
+    display: flex; align-items: center; gap: 10px; padding: 0 12px;
+    background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px;
+}
+.docs-search-box:focus-within { border-color: var(--primary); }
+.docs-search-icon { color: var(--text-muted); flex: 0 0 auto; }
+.docs-search-box input {
+    flex: 1 1 auto; min-width: 0; padding: 11px 0; font: inherit; font-size: 15px;
+    color: var(--text-primary); background: transparent; border: 0; outline: none;
+}
+.docs-search-box input::placeholder { color: var(--text-muted); }
+.docs-search-box input::-webkit-search-cancel-button { cursor: pointer; }
+.docs-search-kbd {
+    flex: 0 0 auto; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    border: 1px solid var(--border-color); border-radius: 5px; padding: 1px 7px;
+}
+.docs-search-box:focus-within .docs-search-kbd { display: none; }
+.docs-search-results {
+    position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 60;
+    max-height: min(70vh, 560px); overflow-y: auto; overscroll-behavior: contain; padding: 6px;
+    background: linear-gradient(var(--bg-card), var(--bg-card)), var(--bg-dark, #0f1117);
+    border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 18px 48px rgba(0, 0, 0, .35);
+}
+.docs-search-count, .docs-search-none { margin: 4px 8px 6px; font-size: 12.5px; color: var(--text-muted); }
+.docs-search-none { font-size: 14px; padding: 8px 0; }
+.docs-search-hit {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; row-gap: 2px;
+    padding: 9px 10px; border-radius: 8px; text-decoration: none; color: var(--text-secondary);
+}
+.docs-search-hit:hover, .docs-search-hit[aria-selected="true"] { background: var(--bg-card-hover, var(--bg-card)); }
+.docs-search-hit[aria-selected="true"] { outline: 1px solid var(--primary); }
+.docs-search-kind {
+    grid-row: 1 / span 3; align-self: start; margin-top: 2px; font-size: 10.5px; font-weight: 700;
+    letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px;
+    border: 1px solid var(--border-color); color: var(--text-muted); min-width: 44px; text-align: center;
+}
+.docs-search-kind-api { color: var(--primary); border-color: var(--primary); }
+.docs-search-kind-chapter { color: var(--accent, var(--primary)); border-color: var(--accent, var(--primary)); }
+.docs-search-title { color: var(--text-primary); font-weight: 600; font-size: 14.5px; overflow-wrap: anywhere; }
+.docs-search-title code { font-family: var(--font-mono); font-size: 13.5px; background: none; padding: 0; }
+.docs-search-where { font-size: 12px; color: var(--text-muted); }
+.docs-search-snip { font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+.docs-search-snip mark { background: rgba(250, 204, 21, .25); color: inherit; border-radius: 3px; padding: 0 1px; }
+.docs-search-hero { margin: 26px auto 0; text-align: left; }
+.docs-search-hero .docs-search-box { padding: 2px 14px; }
+@media (max-width: 700px) {
+    .docs-search-kbd { display: none; }
+    .docs-search-results { max-height: 65vh; }
+}

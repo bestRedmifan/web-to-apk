@@ -1,0 +1,465 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="../../js/ads-gate_pbilw9.js" data-ads="adsense fc"></script>
+    <script src="../../js/fc-present.js"></script>
+    <script async="" src="../../_ext/www.googletagmanager.com/gtag/js/index_14jfiod.html"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PWHRY0DCTF');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0A0A0B">
+    
+    <title>Add Push Notifications &amp; Live Chat to PWA | Step 3 | FreeWebToApk</title>
+    <meta name="title" content="Add Push Notifications &amp; Live Chat to PWA | Step 3 | FreeWebToApk">
+    <meta name="description" content="Step 3: Add OneSignal push notifications and Tawk.to live chat to your Progressive Web App. Free PWA builder with real-time engagement features.">
+    <meta name="keywords" content="pwa push notifications, onesignal pwa, web push notifications free, progressive web app notifications, tawk to live chat, pwa chat integration, web app push messages, pwa engagement">
+    <meta name="author" content="FreeWebToApk by SmartrixLabs">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="index.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://freewebtoapk.com/pwa-builder/integrations">
+    <meta property="og:title" content="PWA Push Notifications &amp; Live Chat - Free PWA Builder">
+    <meta property="og:description" content="Add OneSignal push notifications and Tawk.to live chat to your PWA. Boost engagement with real-time communication.">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Add Push &amp; Chat to PWA - Free Builder">
+    <meta name="twitter:description" content="Integrate OneSignal push notifications and Tawk.to live chat into your PWA.">
+    
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="../../_ext/fonts.googleapis.com/css2/index_1xzlwl7.html" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/style_pbilw9.css">
+    <link rel="stylesheet" href="../../css/generator_pbilw9.css">
+    <link rel="stylesheet" href="../../css/pwa-builder_pbilw9.css">
+    <link rel="stylesheet" href="../../css/responsive_pbilw9.css">
+    
+    <style>
+        .integration-card {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        .integration-card.active {
+            border-color: #8B5CF6;
+            background: rgba(139, 92, 246, 0.05);
+        }
+        .integration-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .integration-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .integration-title span { font-size: 20px; }
+        .integration-title h4 { font-size: 14px; font-weight: 600; margin: 0; }
+        .pwa-toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 26px;
+        }
+        .pwa-toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .pwa-toggle-track {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+            border-radius: 26px;
+        }
+        .pwa-toggle-track::before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: var(--text-muted);
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        .pwa-toggle-switch input:checked + .pwa-toggle-track {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            border-color: #8B5CF6;
+        }
+        .pwa-toggle-switch input:checked + .pwa-toggle-track::before {
+            transform: translateX(22px);
+            background: white;
+        }
+        .integration-body {
+            display: none;
+        }
+        .integration-card.active .integration-body {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            min-height: 18px;
+            accent-color: #8B5CF6;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+        .help-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #8B5CF6;
+            text-decoration: none;
+            margin-top: 6px;
+        }
+        .help-link:hover { text-decoration: underline; }
+        @media (max-width: 768px) {
+            .integration-card { padding: 14px; }
+            .integration-title span { font-size: 18px; }
+            .integration-title h4 { font-size: 13px; }
+            .checkbox-label { padding: 8px; font-size: 12px; }
+        }
+    </style>
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="index.html">
+    <link rel="alternate" hreflang="hi" href="https://freewebtoapk.com/hi/pwa-builder/integrations">
+    <link rel="alternate" hreflang="id" href="https://freewebtoapk.com/id/pwa-builder/integrations">
+    <link rel="alternate" hreflang="es" href="https://freewebtoapk.com/es/pwa-builder/integrations">
+    <link rel="alternate" hreflang="pt-BR" href="https://freewebtoapk.com/pt-br/pwa-builder/integrations">
+    <link rel="alternate" hreflang="pt" href="https://freewebtoapk.com/pt-br/pwa-builder/integrations">
+    <link rel="alternate" hreflang="ru" href="https://freewebtoapk.com/ru/pwa-builder/integrations">
+    <link rel="alternate" hreflang="fr" href="https://freewebtoapk.com/fr/pwa-builder/integrations">
+    <link rel="alternate" hreflang="tr" href="https://freewebtoapk.com/tr/pwa-builder/integrations">
+    <link rel="alternate" hreflang="ar" href="https://freewebtoapk.com/ar/pwa-builder/integrations">
+    <link rel="alternate" hreflang="fa" href="https://freewebtoapk.com/fa/pwa-builder/integrations">
+    <link rel="alternate" hreflang="it" href="https://freewebtoapk.com/it/pwa-builder/integrations">
+    <link rel="alternate" hreflang="x-default" href="index.html">
+    <meta property="og:locale:alternate" content="hi_IN">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="tr_TR">
+    <meta property="og:locale:alternate" content="ar_AR">
+    <meta property="og:locale:alternate" content="fa_IR">
+    <meta property="og:locale:alternate" content="it_IT">
+    <script src="../../js/lang-switch_pbilw9.js" defer=""></script>
+    <!-- /i18n:alternates -->
+</head>
+<body class="pwa-builder-page generator-page">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+        <div class="mobile-menu-links">
+            <a href="../../studio/index.html" class="nav-ai">AI <span class="nav-hot">🔥 Hot</span></a>
+            <a href="../../index.html">Home</a>
+            <a href="../../features/index.html">Features</a>
+            <a href="../../pricing/index.html">Pricing</a>
+            <a href="../../compare/index.html">Compare</a>
+            <a href="../../tools/index.html">🛠️ Tools</a>
+            <a href="../website-url/index.html" class="active" style="padding-left: 24px; font-size: 0.95em;">⚡ PWA Builder</a>
+            <a href="../../generator/website-url/index.html" style="padding-left: 24px; font-size: 0.95em;">📱 APK Generator</a>
+            <a href="../../news/index.html">News</a>
+            <a href="../../docs/index.html">Docs</a>
+            <a href="../../playstore-checklist/index.html">📋 Checklist</a>
+            <a href="../../contact/index.html">Contact</a>
+            <a href="../../about/index.html">About</a>
+            <a href="../../templates/index.html" data-en-only="">Templates</a>
+        </div>
+        <div class="mobile-menu-cta">
+            <a href="../../studio/index.html" class="nav-signin mobile" data-am-account="">Sign in</a>
+            <a href="../../generator/website-url/index.html" class="btn btn-primary">Create Free APK</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">FreeWebToApk</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../studio/index.html" class="nav-ai">AI <span class="nav-hot">🔥 Hot</span></a>
+                <a href="../../index.html">Home</a>
+                <a href="../../features/index.html">Features</a>
+                <a href="../../pricing/index.html">Pricing</a>
+                <a href="../../compare/index.html">Compare</a>
+                <div class="nav-dropdown">
+                    <a href="../../tools/index.html" class="nav-dropdown-trigger">🛠️ Tools <span class="dropdown-arrow">▼</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../website-url/index.html" class="active">⚡ PWA Builder</a>
+                        <hr style="margin: 8px 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <a href="../../screenshot-mockup-generator/index.html">📱 Screenshot Mockup</a>
+                        <a href="../../app-icon-resizer/index.html">🎨 Icon Resizer</a>
+                        <a href="../../feature-graphic-maker/index.html">🖼️ Feature Banner</a>
+                    </div>
+                </div>
+                <a href="../../news/index.html">News</a>
+                <a href="../../docs/index.html">Docs</a>
+                <a href="../../contact/index.html" class="chat-link">💬 Contact Us</a>
+                <a href="../../playstore-checklist/index.html">📋 Checklist</a>
+                <a href="../../templates/index.html" data-en-only="">Templates</a>
+            </div>
+            <div class="nav-actions">
+                <a href="../../studio/index.html" class="nav-signin" data-am-account="">Sign in</a><script>try{if(localStorage.getItem("amSignedIn")==="1")document.querySelectorAll("[data-am-account]").forEach(function(a){a.textContent="My account"})}catch(e){}</script>
+                <a href="../../generator/website-url/index.html" class="btn btn-primary btn-sm">Create APK</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="openMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- PWA Builder Section -->
+    <section class="pwa-builder-section generator-section">
+        <div class="container">
+            <div class="pwa-builder-header generator-header">
+                <h1>⚡ <span class="gradient-text">PWA Builder</span></h1>
+                <p>Step 3 of 5: Add push notifications and live chat</p>
+            </div>
+            
+            <!-- Stepper Progress -->
+            <div class="stepper-progress">
+                <a href="../website-url/index.html" class="step-indicator completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Website URL</span>
+                </a>
+                <div class="step-connector completed"></div>
+                <a href="../icon-splash/index.html" class="step-indicator completed" data-step="2">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Icon &amp; Splash</span>
+                </a>
+                <div class="step-connector completed"></div>
+                <a href="index.html" class="step-indicator active" data-step="3">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Push &amp; Chat</span>
+                </a>
+                <div class="step-connector"></div>
+                <a href="../caching/index.html" class="step-indicator" data-step="4">
+                    <div class="step-number">4</div>
+                    <span class="step-label">Caching</span>
+                </a>
+                <div class="step-connector"></div>
+                <a href="../build/index.html" class="step-indicator" data-step="5">
+                    <div class="step-number">5</div>
+                    <span class="step-label">Build</span>
+                </a>
+            </div>
+            
+            <!-- Form Container -->
+            <div class="generator-wrapper">
+                <div class="generator-form-container">
+                    <div class="step-content active">
+                        <div class="step-header">
+                            <h2>🔗 Integrations</h2>
+                            <p>Add push notifications and live chat to your app (both optional)</p>
+                        </div>
+                        
+                        <!-- OneSignal -->
+                        <div class="integration-card" id="pwaPushCard">
+                            <div class="integration-header">
+                                <div class="integration-title">
+                                    <span>🔔</span>
+                                    <h4>OneSignal Push Notifications</h4>
+                                </div>
+                                <label class="pwa-toggle-switch">
+                                    <input type="checkbox" id="pwaPushToggle">
+                                    <span class="pwa-toggle-track"></span>
+                                </label>
+                            </div>
+                            <div class="integration-body">
+                                <div class="form-group">
+                                    <label for="pwaOnesignalAppId">OneSignal App ID *</label>
+                                    <input type="text" id="pwaOnesignalAppId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
+                                    <a href="https://onesignal.com/" target="_blank" class="help-link">🔗 Get your App ID from OneSignal</a>
+                                </div>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pwaOnesignalAutoPrompt" checked="">
+                                    <span>Auto-prompt for notification permission</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="pwaOnesignalWelcome" checked="">
+                                    <span>Send welcome notification on subscribe</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Tawk.to -->
+                        <div class="integration-card" id="pwaTawkCard">
+                            <div class="integration-header">
+                                <div class="integration-title">
+                                    <span>💬</span>
+                                    <h4>Tawk.to Live Chat</h4>
+                                </div>
+                                <label class="pwa-toggle-switch">
+                                    <input type="checkbox" id="pwaTawkToggle">
+                                    <span class="pwa-toggle-track"></span>
+                                </label>
+                            </div>
+                            <div class="integration-body">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pwaTawkPropertyId">Property ID *</label>
+                                        <input type="text" id="pwaTawkPropertyId" placeholder="xxxxxxxxxxxxxxxxx">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwaTawkWidgetId">Widget ID</label>
+                                        <input type="text" id="pwaTawkWidgetId" placeholder="default" value="default">
+                                    </div>
+                                </div>
+                                <a href="https://www.tawk.to/" target="_blank" class="help-link">🔗 Get your IDs from Tawk.to Dashboard</a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card" style="margin-top: 24px; padding: 16px; background: rgba(99, 102, 241, 0.1); border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.2);">
+                            <p style="margin: 0; color: #94A3B8; font-size: 14px;">
+                                💡 Both integrations are optional. You can skip this step if you don't need push notifications or live chat.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <div class="step-navigation">
+                        <button class="btn btn-secondary" id="prevBtn">
+                            ← Previous
+                        </button>
+                        <button class="btn btn-primary" id="nextBtn">
+                            Next: Caching
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer compact">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 FreeWebToApk by SmartrixLabs. All rights reserved.</p>
+                <div class="footer-links-inline">
+                    <a href="../../privacy/index.html">Privacy</a>
+                    <a href="../../contact/index.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-keyword-tags">
+                <p>Related: pwa push notifications, onesignal integration, web push free, tawk.to live chat, 
+                progressive web app messaging, pwa engagement tools, browser notifications, customer chat widget</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/pwa-wizard-state_pbilw9.js"></script>
+    <script src="../../js/app_pbilw9.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check step 1 completed
+        if (!PWAWizardState.isStepValid(1)) {
+            window.location.href = '/pwa-builder/website-url';
+            return;
+        }
+        
+        var state = PWAWizardState.get();
+        
+        // Load saved state
+        var pushToggle = document.getElementById('pwaPushToggle');
+        var tawkToggle = document.getElementById('pwaTawkToggle');
+        
+        pushToggle.checked = state.enablePush || false;
+        document.getElementById('pwaPushCard').classList.toggle('active', state.enablePush);
+        document.getElementById('pwaOnesignalAppId').value = state.onesignalAppId || '';
+        document.getElementById('pwaOnesignalAutoPrompt').checked = state.onesignalAutoPrompt !== false;
+        document.getElementById('pwaOnesignalWelcome').checked = state.onesignalWelcomeNotification !== false;
+        
+        tawkToggle.checked = state.enableTawk || false;
+        document.getElementById('pwaTawkCard').classList.toggle('active', state.enableTawk);
+        document.getElementById('pwaTawkPropertyId').value = state.tawkPropertyId || '';
+        document.getElementById('pwaTawkWidgetId').value = state.tawkWidgetId || 'default';
+        
+        // Toggle handlers
+        pushToggle.addEventListener('change', function(e) {
+            PWAWizardState.set('enablePush', e.target.checked);
+            document.getElementById('pwaPushCard').classList.toggle('active', e.target.checked);
+        });
+        
+        tawkToggle.addEventListener('change', function(e) {
+            PWAWizardState.set('enableTawk', e.target.checked);
+            document.getElementById('pwaTawkCard').classList.toggle('active', e.target.checked);
+        });
+        
+        // Input handlers
+        document.getElementById('pwaOnesignalAppId').addEventListener('input', function(e) {
+            PWAWizardState.set('onesignalAppId', e.target.value);
+        });
+        
+        document.getElementById('pwaOnesignalAutoPrompt').addEventListener('change', function(e) {
+            PWAWizardState.set('onesignalAutoPrompt', e.target.checked);
+        });
+        
+        document.getElementById('pwaOnesignalWelcome').addEventListener('change', function(e) {
+            PWAWizardState.set('onesignalWelcomeNotification', e.target.checked);
+        });
+        
+        document.getElementById('pwaTawkPropertyId').addEventListener('input', function(e) {
+            PWAWizardState.set('tawkPropertyId', e.target.value);
+        });
+        
+        document.getElementById('pwaTawkWidgetId').addEventListener('input', function(e) {
+            PWAWizardState.set('tawkWidgetId', e.target.value);
+        });
+        
+        // Navigation
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            window.location.href = '/pwa-builder/icon-splash';
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            PWAWizardState.setCurrentStep(4);
+            window.location.href = '/pwa-builder/caching';
+        });
+    });
+    </script>
+    <script src="../../js/support-chat_pbilw9.js" defer=""></script>
+
+
+</body></html>

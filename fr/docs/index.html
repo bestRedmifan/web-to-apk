@@ -1,0 +1,822 @@
+<!doctype html><html lang="fr" data-site-lang="fr"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async="" src="../../_ext/www.googletagmanager.com/gtag/js/index_14jfiod.html"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PWHRY0DCTF');</script>
+    <meta name="google-adsense-account" content="ca-pub-5416155719825820">
+    <script src="../../js/ads-gate_pbilw9.js" data-ads="adsense fc"></script><script src="../../js/fc-present.js"></script>
+
+    <title>Guide d'intégration AppMint - documentation | FreeWebToApk</title>
+    <meta name="description" content="Le guide d'intégration complet du créateur d'applications AppMint : 51 chapitres couvrant les achats intégrés, les publicités, les notifications push, la connexion, les bases de données et le pont natif.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="index.html">
+    <meta name="theme-color" content="#0A0A0B">
+    <!-- Plain-text mirror of this page, for anything that would rather read Markdown than HTML. -->
+    <link rel="alternate" type="text/markdown" href="../../docs/index.md" title="Guide d'intégration AppMint - documentation | FreeWebToApk (Markdown)">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="FreeWebToApk">
+    <meta property="og:url" content="https://freewebtoapk.com/fr/docs/">
+    <meta property="og:title" content="Guide d'intégration AppMint">
+    <meta property="og:description" content="Le guide d'intégration complet du créateur d'applications AppMint : 51 chapitres couvrant les achats intégrés, les publicités, les notifications push, la connexion, les bases de données et le pont natif.">
+    <meta property="og:image" content="https://freewebtoapk.com/assets/icons/icon-512x512.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guide d'intégration AppMint">
+    <meta name="twitter:description" content="Le guide d'intégration complet du créateur d'applications AppMint : 51 chapitres couvrant les achats intégrés, les publicités, les notifications push, la connexion, les bases de données et le pont natif.">
+
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="manifest" href="../../manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="../../_ext/fonts.googleapis.com/css2/index_14pdti6.html" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style_pbilw9.css">
+    <link rel="stylesheet" href="../../css/responsive_pbilw9.css">
+    <link rel="stylesheet" href="../../css/docs_pbilw9.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FreeWebToApk",
+  "url": "https://freewebtoapk.com",
+  "logo": "https://freewebtoapk.com/assets/icons/icon-512x512.png",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "SmartrixLabs"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Guide d'intégration AppMint",
+  "url": "https://freewebtoapk.com/docs/",
+  "description": "Documentation pour créer des applications avec AppMint.",
+  "hasPart": [
+    {
+      "@type": "TechArticle",
+      "name": "Créateur d'applications IA gratuit",
+      "url": "https://freewebtoapk.com/docs/free-ai-app-builder",
+      "description": "Décrivez une application avec des mots simples et obtenez un vrai APK, sans clé ni compte."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "AppMint AI (fonctionnement des crédits)",
+      "url": "https://freewebtoapk.com/docs/how-credits-work",
+      "description": "Ce qu'achète un Mint, combien coûte la génération d'une application typique, et pourquoi modifier coûte moins cher que créer."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "AI App Studio (apportez votre propre clé)",
+      "url": "https://freewebtoapk.com/docs/ai-app-studio-own-key",
+      "description": "Exécutez le pipeline IA avec votre propre clé OpenAI, Anthropic ou OpenRouter au lieu des Mints."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Écrire du HTML pour votre application",
+      "url": "https://freewebtoapk.com/docs/writing-html-for-your-app",
+      "description": "En quoi une page dans l'application diffère d'une page dans un onglet de navigateur, et les règles pour qu'elle fonctionne."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Applications React et frameworks",
+      "url": "https://freewebtoapk.com/docs/react-and-framework-apps",
+      "description": "Paramètres de compilation, routage et chemins des ressources pour les projets de framework qui doivent s'exécuter depuis une origine file://."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Icône de l'application et écran de démarrage",
+      "url": "https://freewebtoapk.com/docs/app-icon-and-splash-screen",
+      "description": "Icônes adaptatives, écran de démarrage et tailles réellement utilisées par Android."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "ZIP vers APK",
+      "url": "https://freewebtoapk.com/docs/import-a-zip-project",
+      "description": "Importez un projet React, Vue ou HTML simple et faites-le intégrer tel quel dans un APK."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "HTML vers APK",
+      "url": "https://freewebtoapk.com/docs/html-to-apk",
+      "description": "Collez une page HTML autonome, ou téléversez le fichier .html, et obtenez un APK signé - sans passage par l'IA, sans Mints."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Live Dev - voyez chaque enregistrement sur votre téléphone",
+      "url": "https://freewebtoapk.com/docs/live-dev-mode",
+      "description": "Une application de développement qui charge le serveur de développement de votre PC via Wi-Fi ou USB en http://localhost, pour que chaque enregistrement s'affiche sur le téléphone, avec une console et le rafraîchissement automatique intégrés."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Invite de notation, Nouveautés et écran de démarrage animé",
+      "url": "https://freewebtoapk.com/docs/rate-prompt-whats-new-animated-splash",
+      "description": "Demandez une note Play au bon moment, affichez une carte « Nouveautés » après chaque mise à jour, et animez l'écran de démarrage avec un GIF ou le nom de l'application."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Runtime JSX / React",
+      "url": "https://freewebtoapk.com/docs/jsx-react-runtime",
+      "description": "Exécutez du JSX brut sans étape de compilation en chargeant React et Babel à l'exécution."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Paiements Stripe",
+      "url": "https://freewebtoapk.com/docs/stripe-payments",
+      "description": "Acceptez les paiements par carte pour des biens physiques et des services, lorsque la facturation Play n'est pas obligatoire."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Intégration AdMob",
+      "url": "https://freewebtoapk.com/docs/admob-ads",
+      "description": "Publicités bannière, interstitielles et avec récompense, règles de consentement, et erreurs qui empêchent l'affichage des publicités."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Vérification de app-ads.txt",
+      "url": "https://freewebtoapk.com/docs/app-ads-txt",
+      "description": "Le seul fichier dont AdMob a besoin sur votre domaine pour vous payer au tarif complet."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Vendre des produits intégrés (IAP)",
+      "url": "https://freewebtoapk.com/docs/in-app-purchases",
+      "description": "Vendez des déblocages uniques et des abonnements depuis votre propre page, avec les prix Play en direct et des vérifications des droits hors ligne."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Connecteurs - paiements, WhatsApp, cartes et plus",
+      "url": "https://freewebtoapk.com/docs/connectors",
+      "description": "Intégrations prêtes à l'emploi pour les passerelles de paiement, WhatsApp, les cartes et d'autres services tiers."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Backend Supabase (à connecter une seule fois)",
+      "url": "https://freewebtoapk.com/docs/supabase-backend",
+      "description": "Connectez une fois une base Postgres, l'authentification et le stockage, et laissez l'IA écrire le code qui les utilise."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Backend Firebase (base de données + comptes)",
+      "url": "https://freewebtoapk.com/docs/firebase-backend",
+      "description": "Une base de données hébergée et des comptes utilisateurs pour une application sans serveur propre."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Connexion Google (Continuer avec Google)",
+      "url": "https://freewebtoapk.com/docs/google-sign-in",
+      "description": "Un vrai bouton « Continuer avec Google » dans une application générée, et le SHA-1 qui le fait fonctionner."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Analytics, connexion Facebook et abonnements - configuration",
+      "url": "https://freewebtoapk.com/docs/analytics-facebook-login-subscriptions",
+      "description": "Firebase Analytics, Facebook Login et les abonnements RevenueCat sur vos propres comptes, configurés pas à pas."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Chat en direct Tawk.to",
+      "url": "https://freewebtoapk.com/docs/live-chat",
+      "description": "Placez un widget de chat en direct, tenu par une équipe, dans l'application sans toucher à votre site web."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Notifications locales et rappels",
+      "url": "https://freewebtoapk.com/docs/local-notifications-and-reminders",
+      "description": "Programmez des rappels sur l'appareil : sans serveur, sans internet, alarmes exactes comprises."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "AppMint Push - Notifiez vos utilisateurs",
+      "url": "https://freewebtoapk.com/docs/appmint-push",
+      "description": "Envoyez une notification à chaque exemplaire installé de votre application AppMint depuis un tableau de bord web."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Intégration d'OneSignal",
+      "url": "https://freewebtoapk.com/docs/onesignal-push",
+      "description": "Utilisez plutôt OneSignal, pour les segments, la programmation et le suivi de livraison."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Mode kiosque immersif",
+      "url": "https://freewebtoapk.com/docs/kiosk-mode",
+      "description": "Verrouillez l'application sur un seul écran pour un comptoir de boutique, un musée ou un appareil de démonstration."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Picture-in-Picture (PiP)",
+      "url": "https://freewebtoapk.com/docs/picture-in-picture",
+      "description": "Faites flotter la vidéo dans un coin pendant que l'utilisateur fait autre chose."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Lecture audio en arrière-plan",
+      "url": "https://freewebtoapk.com/docs/background-audio",
+      "description": "Continuez la lecture quand l'utilisateur quitte l'application ou éteint l'écran."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Capteurs, fichiers et tâches en arrière-plan",
+      "url": "https://freewebtoapk.com/docs/sensors-files-and-background-jobs",
+      "description": "Accéléromètre, capteurs Bluetooth, accès aux fichiers et tâches qui continuent quand l'application est fermée."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Vidéo plein écran native",
+      "url": "https://freewebtoapk.com/docs/fullscreen-video",
+      "description": "Plein écran natif pour la vidéo HTML5, avec la gestion de la rotation et des encoches attendue par Android."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Chromecast / Smart TV",
+      "url": "https://freewebtoapk.com/docs/chromecast-and-smart-tv",
+      "description": "Diffusez une vidéo de l'application vers une TV."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Pont de notification média",
+      "url": "https://freewebtoapk.com/docs/media-notification-bridge",
+      "description": "Commandes de l'écran de verrouillage, visuel et barre de progression pour l'audio que lit votre page."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Accès natif aux dossiers",
+      "url": "https://freewebtoapk.com/docs/native-folder-access",
+      "description": "Lisez et écrivez dans un vrai dossier du téléphone, avec une autorisation qui survit aux redémarrages."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Pont des API web",
+      "url": "https://freewebtoapk.com/docs/web-apis-bridge",
+      "description": "Quelles API de navigateur standard fonctionnent dans l'application, et lesquelles nécessitent plutôt le pont natif."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Bloquer les captures d'écran sur une page",
+      "url": "https://freewebtoapk.com/docs/block-screenshots",
+      "description": "Désactivez les captures d'écran et l'enregistrement d'écran pour les pages qui affichent des informations privées."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Liens profonds",
+      "url": "https://freewebtoapk.com/docs/deep-linking",
+      "description": "Ouvrez une page précise de l'application à partir d'un lien, d'un code QR ou d'une notification."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Site web hors ligne Pro",
+      "url": "https://freewebtoapk.com/docs/offline-website",
+      "description": "Intégrez le site dans l'APK pour qu'il s'ouvre sans aucune connexion."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Injection rapide CSS / JS",
+      "url": "https://freewebtoapk.com/docs/css-and-js-injection",
+      "description": "Modifiez le style ou corrigez un site web que vous intégrez sans modifier le site lui-même."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Scripts utilisateur intelligents",
+      "url": "https://freewebtoapk.com/docs/smart-user-scripts",
+      "description": "Exécutez un script uniquement sur les pages correspondantes - le modèle userscript, au sein de votre application."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Liens personnalisés du menu latéral",
+      "url": "https://freewebtoapk.com/docs/side-menu-links",
+      "description": "Ajoutez vos propres éléments au tiroir, chacun s'ouvrant dans l'application."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Mise à jour à distance",
+      "url": "https://freewebtoapk.com/docs/remote-update",
+      "description": "Envoyez du nouveau contenu aux copies installées de l'application sans passer par une version Play."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Publier sur le web",
+      "url": "https://freewebtoapk.com/docs/publish-to-web",
+      "description": "Mettez la même compilation en ligne comme site web, sur une URL que vous pouvez partager."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Promouvoir votre application",
+      "url": "https://freewebtoapk.com/docs/promotional-tools",
+      "description": "Bannières dans l'application, invites d'évaluation et rappels de mise à jour que vous contrôlez."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Liens intelligents de panier abandonné",
+      "url": "https://freewebtoapk.com/docs/abandoned-cart-links",
+      "description": "Ramenez un acheteur au panier exact qu'il a quitté, grâce à une notification."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Document et PDF vers APK",
+      "url": "https://freewebtoapk.com/docs/document-and-pdf-apps",
+      "description": "Transformez un PDF ou un ensemble de documents en application avec un lecteur intégré."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Photo Story vers APK",
+      "url": "https://freewebtoapk.com/docs/photo-story-apps",
+      "description": "Une application de galerie ou de diaporama créée à partir d'un dossier d'images."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Audio vers APK",
+      "url": "https://freewebtoapk.com/docs/audio-apps",
+      "description": "Un album, un podcast ou une bibliothèque de sons sous forme d'application dédiée."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Vidéo vers APK",
+      "url": "https://freewebtoapk.com/docs/video-apps",
+      "description": "Intégrez de la vidéo dans l'APK, ou diffusez-la en streaming, avec un vrai lecteur."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Métadonnées multimédias (audio/vidéo)",
+      "url": "https://freewebtoapk.com/docs/audio-and-video-metadata",
+      "description": "Titres, pochettes et ordre des pistes pour les médias que vous avez intégrés."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Corriger l'erreur de clé d'importation du Play Store",
+      "url": "https://freewebtoapk.com/docs/fix-play-upload-key-error",
+      "description": "Que faire lorsque Play rejette un téléversement parce que la clé de signature ne correspond pas."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Vérification de la propriété de l'application sur le Play Store",
+      "url": "https://freewebtoapk.com/docs/play-store-ownership-verification",
+      "description": "Prouvez que vous possédez le site web que votre application intègre, ce que Play demande désormais."
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Mettre à jour l'application - toutes vos applications, dans une seule liste",
+      "url": "https://freewebtoapk.com/docs/update-the-app",
+      "description": "Rouvrez toute application que vous avez créée sur ce téléphone avec tous ses paramètres remplis, ou récupérez-la à partir de son APK, puis publiez une mise à jour."
+    },
+    {
+      "@type": "APIReference",
+      "name": "API du pont JavaScript",
+      "url": "https://freewebtoapk.com/docs/api",
+      "description": "Toutes les méthodes natives et API qu'une page peut utiliser dans une application générée : 582 au total, chacune avec un exemple exécutable, extraites du runtime."
+    }
+  ],
+  "inLanguage": "fr"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://freewebtoapk.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Documentation",
+      "item": "https://freewebtoapk.com/docs/"
+    }
+  ]
+}
+    </script>
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="../../docs/index.html">
+    <link rel="alternate" hreflang="hi" href="../../hi/docs/index.html">
+    <link rel="alternate" hreflang="id" href="../../id/docs/index.html">
+    <link rel="alternate" hreflang="es" href="../../es/docs/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="../../pt-br/docs/index.html">
+    <link rel="alternate" hreflang="pt" href="../../pt-br/docs/index.html">
+    <link rel="alternate" hreflang="ru" href="../../ru/docs/index.html">
+    <link rel="alternate" hreflang="tr" href="../../tr/docs/index.html">
+    <link rel="alternate" hreflang="ar" href="../../ar/docs/index.html">
+    <link rel="alternate" hreflang="fa" href="../../fa/docs/index.html">
+    <link rel="alternate" hreflang="it" href="../../it/docs/index.html">
+    <link rel="alternate" hreflang="fr" href="index.html">
+    <link rel="alternate" hreflang="x-default" href="../../docs/index.html">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="hi_IN">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="tr_TR">
+    <meta property="og:locale:alternate" content="ar_AR">
+    <meta property="og:locale:alternate" content="fa_IR">
+    <meta property="og:locale:alternate" content="it_IT">
+    <script src="../../js/lang-switch_pbilw9.js" defer=""></script>
+    <!-- /i18n:alternates -->
+</head>
+<body class="docs-page">
+<div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fermer le menu">×</button>
+        <div class="mobile-menu-links">
+            <a href="../../studio/index.html" class="nav-ai">IA <span class="nav-hot">🔥 Tendance</span></a> <a href="../index.html" class="active">Accueil</a> <a href="../generator/website-url/index.html">Créer une application</a> <a href="../tools/index.html">Outils gratuits</a> <a href="index.html">Documentation</a> <a href="../pricing/index.html">Tarifs</a> <a href="../compare/index.html">Comparer</a> <a href="../playstore-checklist/index.html">Guide de publication</a> <a href="../news/index.html">Actualités</a> <a href="../contact/index.html">Contact</a> <a href="../about/index.html">À propos</a>
+            
+        </div>
+        <div class="mobile-menu-cta">
+            <a href="../../studio/index.html" class="nav-signin mobile" data-am-account="">Se connecter</a> <a href="../generator/website-url/index.html" class="btn btn-primary">Créer un APK gratuit</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+
+<nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"> <span class="logo-icon">🚀</span> <span class="logo-text">FreeWebToApk</span> </a>
+            <div class="nav-links">
+                <a href="../../studio/index.html" class="nav-ai">IA <span class="nav-hot">🔥 Tendance</span></a> <a href="../features/index.html">Fonctionnalités</a>
+                <div class="nav-dropdown">
+                    <a href="../tools/index.html" class="nav-dropdown-trigger">Outils <span class="dropdown-arrow">▼</span></a>
+                    <div class="nav-dropdown-menu nav-mega">
+                        <div class="nav-mega-col">
+                            <h6>Compilation</h6>
+                            <a href="../generator/website-url/index.html">Site web vers APK et AAB<small>URL, ZIP ou HTML</small></a> <a href="../pwa-builder/website-url/index.html">Créateur de PWA<small>Expérimental</small></a>
+                        </div>
+                        <div class="nav-mega-col">
+                            <h6>Concevez votre fiche</h6>
+                            <a href="../app-icon-resizer/index.html">Redimensionneur d'icône</a> <a href="https://freewebtoapk.com/fr/feature-graphic-maker">Créateur de visuel de présentation</a> <a href="https://freewebtoapk.com/fr/screenshot-mockup-generator">Maquettes de captures d'écran</a> <a href="https://freewebtoapk.com/fr/video-promo-maker">Vidéo promo et GIF</a> <a href="https://freewebtoapk.com/fr/color-palette-extractor">Palette de couleurs</a>
+                        </div>
+                        <div class="nav-mega-col">
+                            <h6>Publier et se développer</h6>
+                            <a href="https://freewebtoapk.com/fr/app-store-preview">Aperçu de la fiche</a> <a href="https://freewebtoapk.com/fr/app-description-generator">Modèles de description</a> <a href="https://freewebtoapk.com/fr/play-listing-checklist">Liste de contrôle de la fiche Play</a> <a href="https://freewebtoapk.com/fr/qr-code-generator">Générateur de code QR</a>
+                        </div>
+                        <div class="nav-mega-all"><a href="../tools/index.html">Voir tous les outils →</a></div>
+                    </div>
+                </div>
+                <a href="index.html">Documentation</a> <a href="https://freewebtoapk.com/marketplace">Acheter et vendre des applications</a> <a href="../pricing/index.html">Tarifs</a> <a href="../compare/index.html">Comparer</a> <a href="../playstore-checklist/index.html">Guide de publication</a> <a href="../contact/index.html" class="chat-link">Contact</a>
+                
+            </div>
+            <div class="nav-actions">
+                <a href="../../studio/index.html" class="nav-signin" data-am-account="">Se connecter</a><script>try{if(localStorage.getItem("amSignedIn")==="1")document.querySelectorAll("[data-am-account]").forEach(function(a){a.textContent="Mon compte"})}catch(e){}</script>
+                <a href="../generator/website-url/index.html" class="btn btn-primary btn-sm">Créer un APK</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="openMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <main>
+    <section class="doc-hero">
+        <div class="container">
+            <p class="doc-kicker">Documentation</p>
+            <h1>Guide d'intégration AppMint</h1>
+            <p class="doc-lede">Tout ce qu'une page d'une application générée peut faire (achats, publicités, push, connexion, bases de données, matériel du téléphone) décrit en 430 étapes numérotées réparties en 51 chapitres. C'est le même guide que celui livré dans l'application AppMint, publié ici pour que vous puissiez le lire sur un ordinateur, créer un lien vers une étape précise et le transmettre à l'outil que vous utilisez pour écrire du code.</p>
+            <div class="doc-hero-actions">
+                <a class="btn btn-primary" href="https://freewebtoapk.com/fr/docs/in-app-purchases">Commencer par les achats intégrés</a> <a class="btn btn-secondary" href="https://freewebtoapk.com/fr/docs/api">Référence de l'API du pont</a> <a class="btn btn-secondary" href="../../docs/llms-full.txt">Tout le guide en un seul fichier texte</a>
+            </div>
+        <div class="docs-search docs-search-hero" data-docs-search="" data-index="/fr/docs/search-index.json?v=202611260600">
+            <label class="docs-search-box">
+                <span class="visually-hidden">Rechercher dans la documentation</span>
+                <svg class="docs-search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+                <input type="search" placeholder="Rechercher des guides, des API et des exemples : fingerprint, vibrate, push…" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false">
+                <kbd class="docs-search-kbd" aria-hidden="true">/</kbd>
+            </label>
+            <div class="docs-search-results" role="listbox" hidden=""></div>
+        </div>
+        </div>
+    </section>
+    <div class="container doc-index">
+        <section class="doc-index-section" id="start">
+            <h2>Pour commencer</h2>
+            <p class="doc-index-blurb">Ce que sont les outils de création, combien coûte la création d'une application, et comment leur donner quelque chose à construire.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/free-ai-app-builder">
+                    <h3>Créateur d'applications IA gratuit</h3>
+                    <p>Décrivez une application avec des mots simples et obtenez un vrai APK, sans clé ni compte.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/how-credits-work">
+                    <h3>AppMint AI (fonctionnement des crédits)</h3>
+                    <p>Ce qu'achète un Mint, combien coûte la génération d'une application typique, et pourquoi modifier coûte moins cher que créer.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/ai-app-studio-own-key">
+                    <h3>AI App Studio (apportez votre propre clé)</h3>
+                    <p>Exécutez le pipeline IA avec votre propre clé OpenAI, Anthropic ou OpenRouter au lieu des Mints.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/writing-html-for-your-app">
+                    <h3>Écrire du HTML pour votre application</h3>
+                    <p>En quoi une page dans l'application diffère d'une page dans un onglet de navigateur, et les règles pour qu'elle fonctionne.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/react-and-framework-apps">
+                    <h3>Applications React et frameworks</h3>
+                    <p>Paramètres de compilation, routage et chemins des ressources pour les projets de framework qui doivent s'exécuter depuis une origine file://.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/app-icon-and-splash-screen">
+                    <h3>Icône de l'application et écran de démarrage</h3>
+                    <p>Icônes adaptatives, écran de démarrage et tailles réellement utilisées par Android.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/import-a-zip-project">
+                    <h3>ZIP vers APK</h3>
+                    <p>Importez un projet React, Vue ou HTML simple et faites-le intégrer tel quel dans un APK.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/html-to-apk">
+                    <h3>HTML vers APK</h3>
+                    <p>Collez une page HTML autonome, ou téléversez le fichier .html, et obtenez un APK signé - sans passage par l'IA, sans Mints.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/live-dev-mode">
+                    <h3>Live Dev - voyez chaque enregistrement sur votre téléphone</h3>
+                    <p>Une application de développement qui charge le serveur de développement de votre PC via Wi-Fi ou USB en http://localhost, pour que chaque enregistrement s'affiche sur le téléphone, avec une console et le rafraîchissement automatique intégrés.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/rate-prompt-whats-new-animated-splash">
+                    <h3>Invite de notation, Nouveautés et écran de démarrage animé</h3>
+                    <p>Demandez une note Play au bon moment, affichez une carte « Nouveautés » après chaque mise à jour, et animez l'écran de démarrage avec un GIF ou le nom de l'application.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/jsx-react-runtime">
+                    <h3>Runtime JSX / React</h3>
+                    <p>Exécutez du JSX brut sans étape de compilation en chargeant React et Babel à l'exécution.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="money">
+            <h2>Gagner de l'argent</h2>
+            <p class="doc-index-blurb">Achats intégrés, abonnements, publicités et paiements par carte dans une application générée.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/stripe-payments">
+                    <h3>Paiements Stripe</h3>
+                    <p>Acceptez les paiements par carte pour des biens physiques et des services, lorsque la facturation Play n'est pas obligatoire.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/admob-ads">
+                    <h3>Intégration AdMob</h3>
+                    <p>Publicités bannière, interstitielles et avec récompense, règles de consentement, et erreurs qui empêchent l'affichage des publicités.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/app-ads-txt">
+                    <h3>Vérification de app-ads.txt</h3>
+                    <p>Le seul fichier dont AdMob a besoin sur votre domaine pour vous payer au tarif complet.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/in-app-purchases">
+                    <h3>Vendre des produits intégrés (IAP)</h3>
+                    <p>Vendez des déblocages uniques et des abonnements depuis votre propre page, avec les prix Play en direct et des vérifications des droits hors ligne.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/connectors">
+                    <h3>Connecteurs - paiements, WhatsApp, cartes et plus</h3>
+                    <p>Intégrations prêtes à l'emploi pour les passerelles de paiement, WhatsApp, les cartes et d'autres services tiers.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="backend">
+            <h2>Backend et comptes</h2>
+            <p class="doc-index-blurb">Bases de données, connexion et chat en direct, câblés sans gérer de serveur.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/supabase-backend">
+                    <h3>Backend Supabase (à connecter une seule fois)</h3>
+                    <p>Connectez une fois une base Postgres, l'authentification et le stockage, et laissez l'IA écrire le code qui les utilise.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/firebase-backend">
+                    <h3>Backend Firebase (base de données + comptes)</h3>
+                    <p>Une base de données hébergée et des comptes utilisateurs pour une application sans serveur propre.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/google-sign-in">
+                    <h3>Connexion Google (Continuer avec Google)</h3>
+                    <p>Un vrai bouton « Continuer avec Google » dans une application générée, et le SHA-1 qui le fait fonctionner.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/analytics-facebook-login-subscriptions">
+                    <h3>Analytics, connexion Facebook et abonnements - configuration</h3>
+                    <p>Firebase Analytics, Facebook Login et les abonnements RevenueCat sur vos propres comptes, configurés pas à pas.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/live-chat">
+                    <h3>Chat en direct Tawk.to</h3>
+                    <p>Placez un widget de chat en direct, tenu par une équipe, dans l'application sans toucher à votre site web.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="push">
+            <h2>Notifications</h2>
+            <p class="doc-index-blurb">Notifications push depuis un serveur, et rappels programmés sur l'appareil lui-même.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/local-notifications-and-reminders">
+                    <h3>Notifications locales et rappels</h3>
+                    <p>Programmez des rappels sur l'appareil : sans serveur, sans internet, alarmes exactes comprises.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/appmint-push">
+                    <h3>AppMint Push - Notifiez vos utilisateurs</h3>
+                    <p>Envoyez une notification à chaque exemplaire installé de votre application AppMint depuis un tableau de bord web.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/onesignal-push">
+                    <h3>Intégration d'OneSignal</h3>
+                    <p>Utilisez plutôt OneSignal, pour les segments, la programmation et le suivi de livraison.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="native">
+            <h2>Fonctions de l'appareil</h2>
+            <p class="doc-index-blurb">Le pont JavaScript : capteurs, fichiers, médias, appareil photo, biométrie et le reste du téléphone.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card doc-card-lead" href="https://freewebtoapk.com/fr/docs/api">
+                    <h3>API du pont JavaScript</h3>
+                    <p>Toutes les méthodes natives et API qu'une page peut utiliser dans une application générée : 582 au total, chacune avec un exemple exécutable, extraites du runtime.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/kiosk-mode">
+                    <h3>Mode kiosque immersif</h3>
+                    <p>Verrouillez l'application sur un seul écran pour un comptoir de boutique, un musée ou un appareil de démonstration.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/picture-in-picture">
+                    <h3>Picture-in-Picture (PiP)</h3>
+                    <p>Faites flotter la vidéo dans un coin pendant que l'utilisateur fait autre chose.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/background-audio">
+                    <h3>Lecture audio en arrière-plan</h3>
+                    <p>Continuez la lecture quand l'utilisateur quitte l'application ou éteint l'écran.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/sensors-files-and-background-jobs">
+                    <h3>Capteurs, fichiers et tâches en arrière-plan</h3>
+                    <p>Accéléromètre, capteurs Bluetooth, accès aux fichiers et tâches qui continuent quand l'application est fermée.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/fullscreen-video">
+                    <h3>Vidéo plein écran native</h3>
+                    <p>Plein écran natif pour la vidéo HTML5, avec la gestion de la rotation et des encoches attendue par Android.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/chromecast-and-smart-tv">
+                    <h3>Chromecast / Smart TV</h3>
+                    <p>Diffusez une vidéo de l'application vers une TV.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/media-notification-bridge">
+                    <h3>Pont de notification média</h3>
+                    <p>Commandes de l'écran de verrouillage, visuel et barre de progression pour l'audio que lit votre page.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/native-folder-access">
+                    <h3>Accès natif aux dossiers</h3>
+                    <p>Lisez et écrivez dans un vrai dossier du téléphone, avec une autorisation qui survit aux redémarrages.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/web-apis-bridge">
+                    <h3>Pont des API web</h3>
+                    <p>Quelles API de navigateur standard fonctionnent dans l'application, et lesquelles nécessitent plutôt le pont natif.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/block-screenshots">
+                    <h3>Bloquer les captures d'écran sur une page</h3>
+                    <p>Désactivez les captures d'écran et l'enregistrement d'écran pour les pages qui affichent des informations privées.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="shell">
+            <h2>Structure de l'application et navigation</h2>
+            <p class="doc-index-blurb">Liens profonds, menu latéral, comportement hors ligne, CSS/JS injectés et mises à jour à distance.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/deep-linking">
+                    <h3>Liens profonds</h3>
+                    <p>Ouvrez une page précise de l'application à partir d'un lien, d'un code QR ou d'une notification.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/offline-website">
+                    <h3>Site web hors ligne Pro</h3>
+                    <p>Intégrez le site dans l'APK pour qu'il s'ouvre sans aucune connexion.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/css-and-js-injection">
+                    <h3>Injection rapide CSS / JS</h3>
+                    <p>Modifiez le style ou corrigez un site web que vous intégrez sans modifier le site lui-même.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/smart-user-scripts">
+                    <h3>Scripts utilisateur intelligents</h3>
+                    <p>Exécutez un script uniquement sur les pages correspondantes - le modèle userscript, au sein de votre application.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/side-menu-links">
+                    <h3>Liens personnalisés du menu latéral</h3>
+                    <p>Ajoutez vos propres éléments au tiroir, chacun s'ouvrant dans l'application.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/remote-update">
+                    <h3>Mise à jour à distance</h3>
+                    <p>Envoyez du nouveau contenu aux copies installées de l'application sans passer par une version Play.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/publish-to-web">
+                    <h3>Publier sur le web</h3>
+                    <p>Mettez la même compilation en ligne comme site web, sur une URL que vous pouvez partager.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="content">
+            <h2>Applications de contenu</h2>
+            <p class="doc-index-blurb">Transformer des documents, photos, audio et vidéos en application à part entière.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/promotional-tools">
+                    <h3>Promouvoir votre application</h3>
+                    <p>Bannières dans l'application, invites d'évaluation et rappels de mise à jour que vous contrôlez.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/abandoned-cart-links">
+                    <h3>Liens intelligents de panier abandonné</h3>
+                    <p>Ramenez un acheteur au panier exact qu'il a quitté, grâce à une notification.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/document-and-pdf-apps">
+                    <h3>Document et PDF vers APK</h3>
+                    <p>Transformez un PDF ou un ensemble de documents en application avec un lecteur intégré.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/photo-story-apps">
+                    <h3>Photo Story vers APK</h3>
+                    <p>Une application de galerie ou de diaporama créée à partir d'un dossier d'images.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/audio-apps">
+                    <h3>Audio vers APK</h3>
+                    <p>Un album, un podcast ou une bibliothèque de sons sous forme d'application dédiée.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/video-apps">
+                    <h3>Vidéo vers APK</h3>
+                    <p>Intégrez de la vidéo dans l'APK, ou diffusez-la en streaming, avec un vrai lecteur.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/audio-and-video-metadata">
+                    <h3>Métadonnées multimédias (audio/vidéo)</h3>
+                    <p>Titres, pochettes et ordre des pistes pour les médias que vous avez intégrés.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="publish">
+            <h2>Publication sur Google Play</h2>
+            <p class="doc-index-blurb">Vérification de propriété, clés de signature, et erreurs renvoyées par Play lors de l'importation.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/fix-play-upload-key-error">
+                    <h3>Corriger l'erreur de clé d'importation du Play Store</h3>
+                    <p>Que faire lorsque Play rejette un téléversement parce que la clé de signature ne correspond pas.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/play-store-ownership-verification">
+                    <h3>Vérification de la propriété de l'application sur le Play Store</h3>
+                    <p>Prouvez que vous possédez le site web que votre application intègre, ce que Play demande désormais.</p>
+                </a>
+                <a class="doc-card" href="https://freewebtoapk.com/fr/docs/update-the-app">
+                    <h3>Mettre à jour l'application - toutes vos applications, dans une seule liste</h3>
+                    <p>Rouvrez toute application que vous avez créée sur ce téléphone avec tous ses paramètres remplis, ou récupérez-la à partir de son APK, puis publiez une mise à jour.</p>
+                </a>
+            </div>
+        </section>
+        <section class="doc-index-section" id="machine-readable">
+            <h2>Lire ceci avec un outil</h2>
+            <p class="doc-index-blurb">Chaque page ici a un jumeau Markdown simple à la même adresse avec <code>.md</code> à la fin, lié depuis le <code>&lt;head&gt;</code> de la page elle-même. Si vous préférez ne pas explorer du tout, deux fichiers couvrent l'ensemble.</p>
+            <div class="doc-index-grid">
+                <a class="doc-card" href="../../llms.txt"><h3>/llms.txt</h3><p>L'index : ce qu'est ce site, et chaque page de documentation avec un résumé d'une ligne.</p></a>
+                <a class="doc-card" href="../../docs/llms-full.txt"><h3>/docs/llms-full.txt</h3><p>Le guide entier, chaque chapitre, chaque étape, dans un seul fichier.</p></a>
+            </div>
+        </section>
+    </div>
+    </main>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo"> <span class="logo-icon">🚀</span> <span class="logo-text">FreeWebToApk</span> </a>
+                    <p>Transformez un site web, un ZIP ou une page HTML en APK Android signé et en AAB pour Google Play. Gratuit et illimité.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Produit</h4>
+                    <ul>
+                        <li><a href="../generator/website-url/index.html">Générateur d'APK et d'AAB</a></li>
+                        <li><a href="../pwa-builder/website-url/index.html">Créateur de PWA</a></li>
+                        <li><a href="https://freewebtoapk.com/marketplace">Acheter et vendre des applications</a></li>
+                        <li><a href="../features/index.html">Fonctionnalités</a></li>
+                        <li><a href="../pricing/index.html">Tarifs</a></li>
+                        <li><a href="../compare/index.html">Comparer</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Outils</h4>
+                    <ul>
+                        <li><a href="../app-icon-resizer/index.html">Redimensionneur d'icône</a></li>
+                        <li><a href="https://freewebtoapk.com/fr/feature-graphic-maker">Créateur de visuel de présentation</a></li>
+                        <li><a href="https://freewebtoapk.com/fr/screenshot-mockup-generator">Maquettes de captures d'écran</a></li>
+                        <li><a href="https://freewebtoapk.com/fr/app-description-generator">Modèles de description</a></li>
+                        <li><a href="../tools/index.html">Tous les outils</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="index.html">Documentation</a></li>
+                        
+                        <li><a href="../playstore-checklist/index.html">Guide de publication</a></li>
+                        <li><a href="../news/index.html">Actualités</a></li>
+                        <li><a href="../about/index.html">À propos de nous</a></li>
+                        <li><a href="../contact/index.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-seo-links">
+                <h4>Guides par plateforme</h4>
+                <div class="seo-links-grid">
+                    <a href="https://freewebtoapk.com/fr/convert-wordpress-to-android-app">WordPress vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-shopify-to-android-app">Shopify vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-wix-to-android-app">Wix vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-squarespace-to-android-app">Squarespace vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-webflow-to-android-app">Webflow vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-blogger-to-android-app">Blogger vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-godaddy-website-to-android-app">Site GoDaddy vers application Android</a> <a href="https://freewebtoapk.com/fr/convert-html5-game-to-android-app">Jeu HTML5 vers application Android</a> <a href="https://freewebtoapk.com/fr/lovable-to-apk">Lovable vers APK</a> <a href="https://freewebtoapk.com/fr/bolt-new-to-apk">Bolt.new vers APK</a> <a href="https://freewebtoapk.com/fr/v0-to-apk">v0 vers APK</a> <a href="https://freewebtoapk.com/fr/replit-to-apk">Replit vers APK</a> <a href="https://freewebtoapk.com/fr/google-ai-studio-to-apk">Google AI Studio vers APK</a> <a href="https://freewebtoapk.com/fr/base44-to-apk">Base44 vers APK</a> <a href="https://freewebtoapk.com/fr/framer-to-apk">Framer vers APK</a> <a href="https://freewebtoapk.com/fr/bubble-to-apk">Bubble vers APK</a> <a href="https://freewebtoapk.com/fr/google-sites-to-apk">Google Sites vers APK</a> <a href="https://freewebtoapk.com/fr/app-builder-to-apk">Tout créateur d'applications vers APK</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 FreeWebToApk par SmartrixLabs. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="https://freewebtoapk.com/fr/privacy">Politique de confidentialité</a> <a href="https://freewebtoapk.com/fr/terms">Conditions d'utilisation</a> <a href="https://freewebtoapk.com/cdn-cgi/l/email-protection#7c1419100c18190f17520f111d0e080e1504101d1e0f3c1b111d1510521f1311"><span class="__cf_email__" data-cfemail="deb6bbb2aebabbadb5f0adb3bfacaaacb7a6b2bfbcad9eb9b3bfb7b2f0bdb1b3">[email&nbsp;protected]</span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://freewebtoapk.com/fr/js/app.js?v=202611260743"></script>
+    <script src="https://freewebtoapk.com/fr/js/docs.js?v=202611260743"></script>
+    <script src="https://freewebtoapk.com/fr/js/support-chat.js?v=202611260743"></script>
+
+
+</body></html>

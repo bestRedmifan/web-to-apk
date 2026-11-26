@@ -1,0 +1,447 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async="" src="../../_ext/www.googletagmanager.com/gtag/js/index_14jfiod.html"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PWHRY0DCTF');
+    </script>
+    <script src="../../js/promo-banner_pbilw9.js"></script>
+    <script src="../../js/ads-gate_pbilw9.js" data-ads="adsense fc"></script>
+    <script src="../../js/fc-present.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Make the JSON file that updates your WebView app remotely: new start URL, announcements, maintenance mode, menu text and bundled pages, without a Play Store release. Free.">
+    <meta name="robots" content="index, follow">
+    <title>Remote Update Manifest Maker - Change Your App Without a New Release | FreeWebToApk</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="manifest" href="../../manifest.json">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="../../_ext/fonts.googleapis.com/css2/index_1xzlwl7.html" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style_pbilw9.css">
+    <link rel="stylesheet" href="../../css/responsive_pbilw9.css">
+    
+    <meta property="og:title" content="Remote Update Manifest Maker - Change Your App Without a New Release | FreeWebToApk">
+    <meta property="og:description" content="Make the JSON file that updates your WebView app remotely: new start URL, announcements, maintenance mode, menu text and bundled pages, without a Play Store release. Free.">
+    <meta property="og:image" content="https://freewebtoapk.com/assets/og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://freewebtoapk.com/tools/remote-update-manifest">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="index.html">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Remote Update Manifest Maker",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "url": "https://freewebtoapk.com/tools/remote-update-manifest",
+  "inLanguage": "en"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Remote Update?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An app built with Remote Update on reads a small JSON file you host. Change the file and every installed copy picks up the change on its next launch (and within about 15 seconds while it is open): a new start page, an announcement, maintenance mode, menu text, or new bundled pages. No new release, no store review."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I host the file?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anywhere that serves a public https URL: your own website, GitHub Pages, Cloudflare Pages, Firebase Hosting or a public storage bucket. Put the same address in the app's Remote Update setting when you build it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the file add ads or change permissions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The app only accepts a fixed list of safe fields. Ads can be tuned or switched off remotely, never switched on; permissions, package name and signing can never change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the file is missing or broken?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nothing changes. A missing, unreachable or invalid file is never treated as an instruction: the app keeps running as it is."
+      }
+    }
+  ],
+  "inLanguage": "en"
+}
+    </script>
+    <style>
+        .tool-wrap { max-width: 860px; margin: 0 auto; padding: 0 16px 48px; }
+        .tool-card { background: var(--bg-card, rgba(255,255,255,0.04)); border: 1px solid var(--border-color, rgba(255,255,255,0.1)); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+        .tool-card h2 { margin-top: 0; font-size: 1.25rem; }
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+        .tool-card label { display: block; font-weight: 600; margin: 10px 0 6px; font-size: 14px; }
+        .tool-card input[type=text], .tool-card input[type=url], .tool-card input[type=email], .tool-card input[type=number], .tool-card textarea, .tool-card select {
+            width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border-color, #334155); background: var(--bg-input, #0F172A); color: var(--text-primary, #E2E8F0); font: inherit; }
+        .check { display: flex; gap: 8px; align-items: center; margin: 8px 0; font-size: 14px; }
+        .out { width: 100%; min-height: 220px; font-family: var(--font-mono, monospace); font-size: 12px; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .hint { color: var(--text-secondary, #94A3B8); font-size: 13px; }
+        .faq h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    </style>
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="index.html">
+    <link rel="alternate" hreflang="hi" href="https://freewebtoapk.com/hi/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="id" href="https://freewebtoapk.com/id/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="es" href="https://freewebtoapk.com/es/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="pt-BR" href="https://freewebtoapk.com/pt-br/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="pt" href="https://freewebtoapk.com/pt-br/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="ru" href="https://freewebtoapk.com/ru/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="fr" href="https://freewebtoapk.com/fr/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="tr" href="https://freewebtoapk.com/tr/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="ar" href="https://freewebtoapk.com/ar/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="fa" href="https://freewebtoapk.com/fa/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="it" href="https://freewebtoapk.com/it/tools/remote-update-manifest">
+    <link rel="alternate" hreflang="x-default" href="index.html">
+    <meta property="og:locale:alternate" content="hi_IN">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="tr_TR">
+    <meta property="og:locale:alternate" content="ar_AR">
+    <meta property="og:locale:alternate" content="fa_IR">
+    <meta property="og:locale:alternate" content="it_IT">
+    <script src="../../js/lang-switch_pbilw9.js" defer=""></script>
+    <!-- /i18n:alternates -->
+</head>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">✕</button>
+        <div class="mobile-menu-links">
+            <a href="../../studio/index.html" class="nav-ai">AI <span class="nav-hot">🔥 Hot</span></a>
+            <a href="../../index.html">Home</a>
+            <a href="../../features/index.html">Features</a>
+            <a href="../../pricing/index.html">Pricing</a>
+            <a href="../../compare/index.html">Compare</a>
+            <a href="../index.html">🛠️ Tools</a>
+            <a href="../../pwa-builder/website-url/index.html" style="padding-left: 24px; font-size: 0.95em;">⚡ PWA Builder</a>
+            <a href="../../news/index.html">News</a>
+            <a href="../../docs/index.html">Docs</a>
+            <a href="../../playstore-checklist/index.html">📋 Checklist</a>
+            <a href="../../contact/index.html">Contact</a>
+            <a href="../../about/index.html">About</a>
+            <a href="../../templates/index.html" data-en-only="">Templates</a>
+        </div>
+        <div class="mobile-menu-cta">
+            <a href="../../studio/index.html" class="nav-signin mobile" data-am-account="">Sign in</a>
+            <a href="../../generator/website-url/index.html" class="btn btn-primary">Create Free APK</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">📱</span>
+                <span class="gradient-text">FreeWebToApk</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../studio/index.html" class="nav-ai">AI <span class="nav-hot">🔥 Hot</span></a>
+                <a href="../../index.html">Home</a>
+                <a href="../../features/index.html">Features</a>
+                <a href="../../pricing/index.html">Pricing</a>
+                <a href="../../compare/index.html">Compare</a>
+                <a href="../../contact/index.html">Contact</a>
+                <a href="../../templates/index.html" data-en-only="">Templates</a>
+            </div>
+            <div class="nav-actions">
+                <a href="../../studio/index.html" class="nav-signin" data-am-account="">Sign in</a><script>try{if(localStorage.getItem("amSignedIn")==="1")document.querySelectorAll("[data-am-account]").forEach(function(a){a.textContent="My account"})}catch(e){}</script>
+                <a href="../../generator/website-url/index.html" class="btn btn-primary">Create APK</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="openMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Remote Update Manifest Maker</h1>
+            <p>Change your app after it is installed: a new start page, an announcement, maintenance mode or new bundled pages. Fill in what you want to change, download the file, upload it to the address you gave the app.</p>
+        </div>
+    </section>
+    <main class="tool-wrap">
+
+        <div class="tool-card">
+            <h2>1. Version</h2>
+            <div class="tool-grid">
+                <div><label for="ruVersion">Manifest version</label><input type="number" id="ruVersion" min="1" value="1"><span class="hint">Raise it every time you publish a change.</span></div>
+                <div><label for="ruMinApp">Only for app version code at least (optional)</label><input type="number" id="ruMinApp" min="0" placeholder="0"></div>
+            </div>
+            <label class="check"><input type="checkbox" id="ruPaused"> Pause: keep whatever each phone already has</label>
+            <label class="check"><input type="checkbox" id="ruRevert"> Revert: drop every remote change and run the app exactly as built</label>
+        </div>
+        <div class="tool-card">
+            <h2>2. Start page</h2>
+            <label for="ruUrl">New website URL (website apps only)</label><input type="url" id="ruUrl" placeholder="https://yoursite.com/new-home">
+        </div>
+        <div class="tool-card">
+            <h2>3. Announcement</h2>
+            <label for="ruAnn">Text (empty = no announcement)</label><textarea id="ruAnn" rows="2" placeholder="Version 2 is out! Tap to see what's new."></textarea>
+            <div class="tool-grid">
+                <div><label for="ruAnnImg">Image URL (optional)</label><input type="url" id="ruAnnImg" placeholder="https://..."></div>
+                <div><label for="ruAnnBg">Background colour</label><input type="text" id="ruAnnBg" placeholder="#1A1A2E"></div>
+                <div><label for="ruAnnFg">Text colour</label><input type="text" id="ruAnnFg" placeholder="#FFFFFF"></div>
+            </div>
+            <p class="hint">Users can dismiss it; a new text shows again automatically.</p>
+        </div>
+        <div class="tool-card">
+            <h2>4. Maintenance mode</h2>
+            <label class="check"><input type="checkbox" id="ruMaint"> Show a maintenance screen instead of the app</label>
+            <label for="ruMaintText">Message</label><textarea id="ruMaintText" rows="2" placeholder="We're upgrading. Back in 30 minutes."></textarea>
+            <div class="tool-grid">
+                <div><label for="ruMaintImg">Image URL (optional)</label><input type="url" id="ruMaintImg"></div>
+                <div><label for="ruMaintBg">Background colour</label><input type="text" id="ruMaintBg" placeholder="#0F172A"></div>
+                <div><label for="ruMaintFg">Text colour</label><input type="text" id="ruMaintFg" placeholder="#FFFFFF"></div>
+            </div>
+        </div>
+        <div class="tool-card">
+            <h2>5. App behaviour and menu (leave empty to keep as built)</h2>
+            <div class="tool-grid">
+                <div><label for="ruPull">Pull to refresh</label><select id="ruPull"><option value="">Keep</option><option value="true">On</option><option value="false">Off</option></select></div>
+                <div><label for="ruExit">Exit confirmation</label><select id="ruExit"><option value="">Keep</option><option value="true">On</option><option value="false">Off</option></select></div>
+                <div><label for="ruShare">Menu: Share app</label><select id="ruShare"><option value="">Keep</option><option value="true">On</option><option value="false">Off</option></select></div>
+                <div><label for="ruRate">Menu: Rate app</label><select id="ruRate"><option value="">Keep</option><option value="true">On</option><option value="false">Off</option></select></div>
+                <div><label for="ruAds">Ads</label><select id="ruAds"><option value="">Keep</option><option value="false">Switch ads off</option></select></div>
+            </div>
+            <div class="tool-grid">
+                <div><label for="ruEmail">Contact email</label><input type="email" id="ruEmail"></div>
+                <div><label for="ruPhone">Contact phone</label><input type="text" id="ruPhone"></div>
+            </div>
+            <label for="ruAbout">About text</label><textarea id="ruAbout" rows="2"></textarea>
+        </div>
+        <div class="tool-card">
+            <h2>6. New bundled pages (HTML / ZIP apps, optional)</h2>
+            <p class="hint">Upload a new ZIP of your site to your host, then pick the same ZIP here: its SHA-256 is computed in your browser (the file is not uploaded anywhere). Phones download it on Wi-Fi and switch to it on their next launch.</p>
+            <div class="tool-grid">
+                <div><label for="ruZipUrl">ZIP URL</label><input type="url" id="ruZipUrl" placeholder="https://yoursite.com/app-v2.zip"></div>
+                <div><label for="ruZipVer">Content version</label><input type="number" id="ruZipVer" min="1" placeholder="2"></div>
+            </div>
+            <label for="ruZip">The same ZIP file</label><input type="file" id="ruZip" accept=".zip">
+            <label class="check"><input type="checkbox" id="ruWifi" checked=""> Download on Wi-Fi only</label>
+            <p class="hint" id="ruZipHash"></p>
+        </div>
+        <div class="tool-card">
+            <h2>Your manifest</h2>
+            <textarea id="ruOut" class="out" readonly=""></textarea>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="ruDownload" type="button">Download manifest.json</button>
+                <button class="btn btn-secondary" id="ruCopy" type="button">Copy</button>
+            </div>
+        </div>
+        <section class="tool-card faq">
+            <h2>Questions</h2>
+            <h3>What is Remote Update?</h3>
+            <p>An app built with Remote Update on reads a small JSON file you host. Change the file and every installed copy picks up the change on its next launch (and within about 15 seconds while it is open): a new start page, an announcement, maintenance mode, menu text, or new bundled pages. No new release, no store review.</p>
+            <h3>Where do I host the file?</h3>
+            <p>Anywhere that serves a public https URL: your own website, GitHub Pages, Cloudflare Pages, Firebase Hosting or a public storage bucket. Put the same address in the app's Remote Update setting when you build it.</p>
+            <h3>Can the file add ads or change permissions?</h3>
+            <p>No. The app only accepts a fixed list of safe fields. Ads can be tuned or switched off remotely, never switched on; permissions, package name and signing can never change.</p>
+            <h3>What happens if the file is missing or broken?</h3>
+            <p>Nothing changes. A missing, unreachable or invalid file is never treated as an instruction: the app keeps running as it is.</p>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../../index.html" class="logo">
+                        <span class="logo-icon">📱</span>
+                        <span class="gradient-text">FreeWebToApk</span>
+                    </a>
+                    <p>Convert any website into a professional Android app in seconds. Free, fast, and no coding required.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="../../features/index.html">Features</a></li>
+                        <li><a href="../../pricing/index.html">Pricing</a></li>
+                        <li><a href="../../generator/website-url/index.html">Create APK</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../../about/index.html">About Us</a></li>
+                        <li><a href="../../contact/index.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../../privacy/index.html">Privacy Policy</a></li>
+                        <li><a href="../../terms/index.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 FreeWebToApk by SmartrixLabs. All rights reserved.</p>
+                <p>Made with ❤️ for developers and businesses worldwide</p>
+            </div>
+            
+            <!-- Related Topics -->
+            <div class="footer-keyword-tags">
+                <p>Related: enterprise data privacy, business app security policy, GDPR compliant app builder, corporate data protection, B2B privacy standards, SaaS security compliance, SOC 2 ready platform, enterprise security features, secure mobile development, data encryption standards, privacy-first app builder, CCPA compliant solution, business data security, corporate compliance tools, secure enterprise mobile</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../js/app.js"></script>
+
+    <style>
+    /* Legal Page Styles */
+    .legal-section {
+        padding: 40px 0 60px;
+    }
+    
+    .legal-content {
+        max-width: 800px;
+        margin: 0 auto;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 32px;
+    }
+    
+    .legal-content h2 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 28px;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+    
+    .legal-content h2:first-child {
+        margin-top: 0;
+    }
+    
+    .legal-content h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 24px;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+    }
+    
+    .legal-content p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 16px;
+    }
+    
+    .legal-content ul {
+        margin-bottom: 16px;
+        padding-left: 24px;
+    }
+    
+    .legal-content li {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 8px;
+    }
+    
+    .legal-content a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+    
+    .legal-content a:hover {
+        text-decoration: underline;
+    }
+    
+    .legal-footer {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+        .legal-content {
+            padding: 32px 24px;
+        }
+    }
+    </style>
+    <script>
+    (function () {
+        var $ = function (id) { return document.getElementById(id); };
+        var zipSha = '';
+        function tri(id, key, cfg) { var v = $(id).value; if (v) cfg[key] = v === 'true'; }
+        function txt(id, key, cfg) { var v = $(id).value.trim(); if (v) cfg[key] = v; }
+        function build() {
+            var m = { manifestFormat: 1, version: Math.max(1, parseInt($('ruVersion').value, 10) || 1) };
+            var minApp = parseInt($('ruMinApp').value, 10); if (minApp > 0) m.minAppVersion = minApp;
+            if ($('ruPaused').checked) m.paused = true;
+            if ($('ruRevert').checked) m.revertToShipped = true;
+            var c = {};
+            txt('ruUrl', 'websiteUrl', c);
+            var ann = $('ruAnn').value.trim();
+            if (ann) { c.announcementText = ann; c.announcementId = 'a' + m.version; }
+            txt('ruAnnImg', 'announcementImageUrl', c); txt('ruAnnBg', 'announcementBgColor', c); txt('ruAnnFg', 'announcementTextColor', c);
+            if ($('ruMaint').checked) c.maintenanceMode = true;
+            txt('ruMaintText', 'maintenanceText', c); txt('ruMaintImg', 'maintenanceImageUrl', c); txt('ruMaintBg', 'maintenanceBgColor', c); txt('ruMaintFg', 'maintenanceTextColor', c);
+            tri('ruPull', 'enablePullToRefresh', c); tri('ruExit', 'enableExitConfirmation', c); tri('ruShare', 'enableShareApp', c); tri('ruRate', 'enableRateApp', c); tri('ruAds', 'enableAds', c);
+            txt('ruEmail', 'contactEmail', c); txt('ruPhone', 'contactPhone', c); txt('ruAbout', 'aboutUs', c);
+            m.config = c;
+            var zu = $('ruZipUrl').value.trim(), zv = parseInt($('ruZipVer').value, 10);
+            if (zu && zv > 0 && zipSha) m.content = { version: zv, url: zu, sha256: zipSha, wifiOnly: $('ruWifi').checked };
+            $('ruOut').value = JSON.stringify(m, null, 2);
+        }
+        document.querySelectorAll('.tool-wrap input, .tool-wrap textarea, .tool-wrap select').forEach(function (el) {
+            if (el.id !== 'ruOut') el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', build);
+        });
+        $('ruZip').addEventListener('change', async function () {
+            var f = this.files[0]; if (!f) return;
+            var d = new Uint8Array(await crypto.subtle.digest('SHA-256', await f.arrayBuffer()));
+            zipSha = Array.from(d, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+            $('ruZipHash').textContent = 'SHA-256: ' + zipSha;
+            build();
+        });
+        $('ruDownload').addEventListener('click', function () {
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([$('ruOut').value], { type: 'application/json' }));
+            a.download = 'manifest.json'; a.click();
+        });
+        $('ruCopy').addEventListener('click', function () { navigator.clipboard.writeText($('ruOut').value); this.textContent = 'Copied'; });
+        build();
+    })();
+    </script>
+    <script src="../../js/support-chat_pbilw9.js" defer=""></script>
+
+
+</body></html>

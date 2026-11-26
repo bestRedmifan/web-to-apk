@@ -1,0 +1,105 @@
+# FreeWebToApk
+
+> Build an Android APK or AAB from a website, a ZIP project, or a description of an app. The
+> converter runs in the browser; the AppMint Android app does the same job on a phone,
+> including an AI that writes the app for you. Free, no account.
+
+## Documentation - AppMint integration guide
+
+51 chapters generated from the guide shipped inside the app. Every page has a
+Markdown twin at the same URL with .md appended.
+
+### Start here
+
+- [Free AI App Builder](https://freewebtoapk.com/docs/free-ai-app-builder.md): Describe an app in plain words and get a real APK, with no key and no account.
+- [AppMint AI (How Credits Work)](https://freewebtoapk.com/docs/how-credits-work.md): What one Mint buys, what a typical app costs to generate, and why editing is cheaper than creating.
+- [AI App Studio (Bring Your Own Key)](https://freewebtoapk.com/docs/ai-app-studio-own-key.md): Run the AI pipeline on your own OpenAI, Anthropic or OpenRouter key instead of Mints.
+- [Writing HTML for your app](https://freewebtoapk.com/docs/writing-html-for-your-app.md): How a page inside the app differs from a page in a browser tab, and the rules that keep it working.
+- [React & Framework Apps](https://freewebtoapk.com/docs/react-and-framework-apps.md): Build settings, routing and asset paths for framework projects that have to run from a file:// origin.
+- [App Icon & Splash Screen](https://freewebtoapk.com/docs/app-icon-and-splash-screen.md): Adaptive icons, the splash screen, and the sizes Android actually uses.
+- [ZIP to APK](https://freewebtoapk.com/docs/import-a-zip-project.md): Upload a React, Vue or plain HTML project and have it bundled into an APK unchanged.
+- [HTML to APK](https://freewebtoapk.com/docs/html-to-apk.md): Paste one self-contained HTML page, or upload the .html file, and get a signed APK - no AI round, no Mints.
+- [Live Dev - see every save on your phone](https://freewebtoapk.com/docs/live-dev-mode.md): A dev app that loads your PC's dev server over Wi-Fi or USB as http://localhost, so every save shows on the phone - with a console and refresh-on-save built in.
+- [Rate prompt, What's new and animated splash](https://freewebtoapk.com/docs/rate-prompt-whats-new-animated-splash.md): Ask for a Play rating at the right moment, show a "What’s new" card after each update, and animate the splash with a GIF or the app name.
+- [JSX / React Runtime](https://freewebtoapk.com/docs/jsx-react-runtime.md): Run raw JSX with no build step by loading React and Babel at runtime.
+
+### Making money
+
+- [Stripe Payments](https://freewebtoapk.com/docs/stripe-payments.md): Take card payments for physical goods and services, where Play billing is not required.
+- [AdMob Integration](https://freewebtoapk.com/docs/admob-ads.md): Banner, interstitial and rewarded ads, the consent rules, and the mistakes that stop ads serving.
+- [app-ads.txt Verification](https://freewebtoapk.com/docs/app-ads-txt.md): The one file AdMob needs on your domain before it will pay full rates.
+- [Sell In-App Products (IAP)](https://freewebtoapk.com/docs/in-app-purchases.md): Sell one-time unlocks and subscriptions from your own page, with live Play prices and offline entitlement checks.
+- [Connectors - Payments, WhatsApp, Maps & more](https://freewebtoapk.com/docs/connectors.md): Prebuilt wiring for payment gateways, WhatsApp, Maps and other third-party services.
+
+### Backend and accounts
+
+- [Supabase Backend (Connect It Once)](https://freewebtoapk.com/docs/supabase-backend.md): Connect a Postgres database, auth and storage once, and let the AI write against it.
+- [Firebase Backend (Database + Accounts)](https://freewebtoapk.com/docs/firebase-backend.md): A hosted database and user accounts for an app with no server of its own.
+- [Google Sign-In (Continue with Google)](https://freewebtoapk.com/docs/google-sign-in.md): A real "Continue with Google" button inside a generated app, and the SHA-1 that makes it work.
+- [Analytics, Facebook login & subscriptions - setup](https://freewebtoapk.com/docs/analytics-facebook-login-subscriptions.md): Firebase Analytics, Facebook Login and RevenueCat subscriptions on your own accounts, set up step by step.
+- [Tawk.to Live Chat](https://freewebtoapk.com/docs/live-chat.md): Put a staffed live-chat widget in the app without touching your website.
+
+### Notifications
+
+- [Local Notifications & Reminders](https://freewebtoapk.com/docs/local-notifications-and-reminders.md): Schedule reminders on the device - no server, no internet, exact alarms included.
+- [AppMint Push - Notify Your Users](https://freewebtoapk.com/docs/appmint-push.md): Send a notification to every installed copy of your AppMint app from a web dashboard.
+- [OneSignal Integration](https://freewebtoapk.com/docs/onesignal-push.md): Use OneSignal instead, for segments, scheduling and delivery reporting.
+
+### Device features
+
+- [Immersive Kiosk Mode](https://freewebtoapk.com/docs/kiosk-mode.md): Lock the app to one screen for a shop counter, a museum or a demo unit.
+- [Picture-in-Picture (PiP)](https://freewebtoapk.com/docs/picture-in-picture.md): Float the video in a corner while the user does something else.
+- [Background Audio Playback](https://freewebtoapk.com/docs/background-audio.md): Keep playing when the user leaves the app or turns the screen off.
+- [Sensors, Files & Background Jobs](https://freewebtoapk.com/docs/sensors-files-and-background-jobs.md): Accelerometer, Bluetooth sensors, file access and work that keeps running when the app is closed.
+- [Native Fullscreen Video](https://freewebtoapk.com/docs/fullscreen-video.md): Native fullscreen for HTML5 video, with the rotation and cutout handling Android expects.
+- [Chromecast / Smart TV](https://freewebtoapk.com/docs/chromecast-and-smart-tv.md): Cast video from the app to a TV.
+- [Media Notification Bridge](https://freewebtoapk.com/docs/media-notification-bridge.md): Lock-screen controls, artwork and the seek bar for audio your page is playing.
+- [Native Folder Access](https://freewebtoapk.com/docs/native-folder-access.md): Read and write a real folder on the phone, with permission that survives reboots.
+- [Web APIs Bridge](https://freewebtoapk.com/docs/web-apis-bridge.md): Which standard browser APIs work inside the app, and which need the native bridge instead.
+- [Block Screenshots on a Page](https://freewebtoapk.com/docs/block-screenshots.md): Turn off screenshots and screen recording for pages that show something private.
+
+### App shell and navigation
+
+- [Deep Linking](https://freewebtoapk.com/docs/deep-linking.md): Open a specific page in the app from a link, a QR code or a notification.
+- [Offline Website Pro](https://freewebtoapk.com/docs/offline-website.md): Ship the site inside the APK so it opens with no connection at all.
+- [CSS / JS Quick Injection](https://freewebtoapk.com/docs/css-and-js-injection.md): Restyle or patch a website you are wrapping without editing the website.
+- [Smart User Scripts](https://freewebtoapk.com/docs/smart-user-scripts.md): Run a script on matching pages only - the userscript model, inside your app.
+- [Custom Side Menu Links](https://freewebtoapk.com/docs/side-menu-links.md): Add your own items to the drawer, each opening inside the app.
+- [Remote Update](https://freewebtoapk.com/docs/remote-update.md): Push new app content to installed copies without a Play release.
+- [Publish to Web](https://freewebtoapk.com/docs/publish-to-web.md): Put the same build online as a website, on a URL you can share.
+
+### Content apps
+
+- [Promote your app](https://freewebtoapk.com/docs/promotional-tools.md): In-app banners, rating prompts and update nudges you control.
+- [Smart Abandoned Cart Links](https://freewebtoapk.com/docs/abandoned-cart-links.md): Bring a shopper back to the exact cart they left, from a notification.
+- [Document & PDF to APK](https://freewebtoapk.com/docs/document-and-pdf-apps.md): Turn a PDF or a set of documents into an app with a reader built in.
+- [Photo Story to APK](https://freewebtoapk.com/docs/photo-story-apps.md): A gallery or slideshow app built from a folder of images.
+- [Audio to APK](https://freewebtoapk.com/docs/audio-apps.md): An album, a podcast or a sound library as its own app.
+- [Video to APK](https://freewebtoapk.com/docs/video-apps.md): Ship video inside the APK, or stream it, with a real player.
+- [Multimedia Metadata (Audio/Video)](https://freewebtoapk.com/docs/audio-and-video-metadata.md): Titles, artwork and track order for the media you bundled.
+
+### Publishing on Google Play
+
+- [Fix Play Store Upload Key Error](https://freewebtoapk.com/docs/fix-play-upload-key-error.md): What to do when Play rejects an upload because the signing key does not match.
+- [Play Store App Ownership Verification](https://freewebtoapk.com/docs/play-store-ownership-verification.md): Prove you own the website your app wraps, which Play now asks for.
+- [Update the App - every app you built, one list](https://freewebtoapk.com/docs/update-the-app.md): Reopen any app you built on this phone with every setting filled in, or recover it from its APK, and ship an update.
+
+### Reference
+
+- [JavaScript bridge API](https://freewebtoapk.com/docs/api.md): Every native method and API a page can use inside a generated app - 582 of them, each with a runnable example, extracted from the runtime.
+
+## The whole guide in one file
+
+- [https://freewebtoapk.com/docs/llms-full.txt](https://freewebtoapk.com/docs/llms-full.txt): every chapter and every step, concatenated.
+
+## Tools and pages
+
+- [https://freewebtoapk.com/generator/website-url](https://freewebtoapk.com/generator/website-url): the APK/AAB builder wizard.
+- [https://freewebtoapk.com/pwa-builder](https://freewebtoapk.com/pwa-builder): manifest and service worker generator.
+- [https://freewebtoapk.com/tools](https://freewebtoapk.com/tools): icon resizer, screenshot mockups, feature graphics, QR codes, listing preview.
+- [https://freewebtoapk.com/playstore-checklist](https://freewebtoapk.com/playstore-checklist): what Google Play asks for before it will publish an app.
+- [https://freewebtoapk.com/pricing](https://freewebtoapk.com/pricing): what is free and what the paid bundle includes.
+
+## Notes
+
+- Contact: helpdesk.smartrixlabs@gmail.com

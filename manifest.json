@@ -1,0 +1,16 @@
+{
+  "name": "FreeWebToApk",
+  "short_name": "WebToApk",
+  "description": "Convert any website to Android APK in 2 seconds. Free, fast, no coding required.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0F1C",
+  "theme_color": "#00D4FF",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

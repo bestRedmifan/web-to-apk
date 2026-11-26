@@ -1,0 +1,381 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <script src="../../js/ads-gate_pbilw9.js" data-ads="adsense fc"></script>
+    <script src="../../js/fc-present.js"></script>
+    <script async="" src="../../_ext/www.googletagmanager.com/gtag/js/index_14jfiod.html"></script>
+<script>
+        // Downscale an uploaded image to a square PNG data URL (sessionStorage-safe)
+        function wtaProcessImage(file, maxSize, square, cb) {
+            if (!file.type || file.type.indexOf('image/') !== 0) { cb(null, 'Please upload an image file'); return; }
+            if (file.size > 15 * 1024 * 1024) { cb(null, 'Image is too large (max 15 MB)'); return; }
+            var url = URL.createObjectURL(file);
+            var img = new Image();
+            img.onload = function() {
+                try {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    if (square) {
+                        canvas.width = canvas.height = maxSize;
+                        var side = Math.min(img.width, img.height);
+                        var sx = (img.width - side) / 2, sy = (img.height - side) / 2;
+                        ctx.imageSmoothingQuality = 'high';
+                        ctx.drawImage(img, sx, sy, side, side, 0, 0, maxSize, maxSize);
+                    } else {
+                        var scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+                        canvas.width = Math.round(img.width * scale);
+                        canvas.height = Math.round(img.height * scale);
+                        ctx.imageSmoothingQuality = 'high';
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    }
+                    URL.revokeObjectURL(url);
+                    cb(canvas.toDataURL('image/png'), null);
+                } catch (err) {
+                    URL.revokeObjectURL(url);
+                    cb(null, 'Could not process this image. Try a PNG or JPG.');
+                }
+            };
+            img.onerror = function() { URL.revokeObjectURL(url); cb(null, 'Could not read this image file.'); };
+            img.src = url;
+        }
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PWHRY0DCTF');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0A0A0B">
+    
+    <title>PWA Icon &amp; Splash Screen Generator Free | Step 2 | FreeWebToApk</title>
+    <meta name="title" content="PWA Icon &amp; Splash Screen Generator Free | Step 2 | FreeWebToApk">
+    <meta name="description" content="Step 2: Upload app icon and customize splash screen colors for your Progressive Web App. Auto-generate all PWA icon sizes. Free online PWA builder.">
+    <meta name="keywords" content="pwa icon generator, pwa splash screen, progressive web app icon, app icon resizer pwa, pwa manifest icons, web app icon sizes, pwa theme color, splash screen generator">
+    <meta name="author" content="FreeWebToApk by SmartrixLabs">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="index.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://freewebtoapk.com/pwa-builder/icon-splash">
+    <meta property="og:title" content="PWA Icon &amp; Splash Screen Generator - Free PWA Builder">
+    <meta property="og:description" content="Generate PWA icons in all required sizes. Customize theme colors and splash screen for your Progressive Web App.">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PWA Icon Generator - Free PWA Builder">
+    <meta name="twitter:description" content="Auto-generate all PWA icon sizes. Customize theme and splash colors.">
+    
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="../../_ext/fonts.googleapis.com/css2/index_1xzlwl7.html" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../css/style_pbilw9.css">
+    <link rel="stylesheet" href="../../css/generator_pbilw9.css">
+    <link rel="stylesheet" href="../../css/pwa-builder_pbilw9.css">
+    <link rel="stylesheet" href="../../css/responsive_pbilw9.css">
+    <!-- i18n:alternates -->
+    <link rel="alternate" hreflang="en" href="index.html">
+    <link rel="alternate" hreflang="hi" href="../../hi/pwa-builder/icon-splash/index.html">
+    <link rel="alternate" hreflang="id" href="https://freewebtoapk.com/id/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="es" href="https://freewebtoapk.com/es/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="pt-BR" href="https://freewebtoapk.com/pt-br/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="pt" href="https://freewebtoapk.com/pt-br/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="ru" href="https://freewebtoapk.com/ru/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="fr" href="https://freewebtoapk.com/fr/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="tr" href="https://freewebtoapk.com/tr/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="ar" href="https://freewebtoapk.com/ar/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="fa" href="https://freewebtoapk.com/fa/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="it" href="https://freewebtoapk.com/it/pwa-builder/icon-splash">
+    <link rel="alternate" hreflang="x-default" href="index.html">
+    <meta property="og:locale:alternate" content="hi_IN">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="tr_TR">
+    <meta property="og:locale:alternate" content="ar_AR">
+    <meta property="og:locale:alternate" content="fa_IR">
+    <meta property="og:locale:alternate" content="it_IT">
+    <script src="../../js/lang-switch_pbilw9.js" defer=""></script>
+    <!-- /i18n:alternates -->
+</head>
+<body class="pwa-builder-page generator-page">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+        <div class="mobile-menu-links">
+            <a href="../../studio/index.html" class="nav-ai">AI <span class="nav-hot">🔥 Hot</span></a>
+            <a href="../../index.html">Home</a>
+            <a href="../../features/index.html">Features</a>
+            <a href="../../pricing/index.html">Pricing</a>
+            <a href="../../compare/index.html">Compare</a>
+            <a href="../../tools/index.html">🛠️ Tools</a>
+            <a href="../website-url/index.html" class="active" style="padding-left: 24px; font-size: 0.95em;">⚡ PWA Builder</a>
+            <a href="../../generator/website-url/index.html" style="padding-left: 24px; font-size: 0.95em;">📱 APK Generator</a>
+            <a href="../../news/index.html">News</a>
+            <a href="../../docs/index.html">Docs</a>
+            <a href="../../playstore-checklist/index.html">📋 Checklist</a>
+            <a href="../../contact/index.html">Contact</a>
+            <a href="../../about/index.html">About</a>
+            <a href="../../templates/index.html" data-en-only="">Templates</a>
+        </div>
+        <div class="mobile-menu-cta">
+            <a href="../../studio/index.html" class="nav-signin mobile" data-am-account="">Sign in</a>
+            <a href="../../generator/website-url/index.html" class="btn btn-primary">Create Free APK</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">FreeWebToApk</span>
+            </a>
+            <div class="nav-links">
+                <a href="../../studio/index.html" class="nav-ai">AI <span class="nav-hot">🔥 Hot</span></a>
+                <a href="../../index.html">Home</a>
+                <a href="../../features/index.html">Features</a>
+                <a href="../../pricing/index.html">Pricing</a>
+                <a href="../../compare/index.html">Compare</a>
+                <div class="nav-dropdown">
+                    <a href="../../tools/index.html" class="nav-dropdown-trigger">🛠️ Tools <span class="dropdown-arrow">▼</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../website-url/index.html" class="active">⚡ PWA Builder</a>
+                        <hr style="margin: 8px 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <a href="../../screenshot-mockup-generator/index.html">📱 Screenshot Mockup</a>
+                        <a href="../../app-icon-resizer/index.html">🎨 Icon Resizer</a>
+                        <a href="../../feature-graphic-maker/index.html">🖼️ Feature Banner</a>
+                    </div>
+                </div>
+                <a href="../../news/index.html">News</a>
+                <a href="../../docs/index.html">Docs</a>
+                <a href="../../contact/index.html" class="chat-link">💬 Contact Us</a>
+                <a href="../../playstore-checklist/index.html">📋 Checklist</a>
+                <a href="../../templates/index.html" data-en-only="">Templates</a>
+            </div>
+            <div class="nav-actions">
+                <a href="../../studio/index.html" class="nav-signin" data-am-account="">Sign in</a><script>try{if(localStorage.getItem("amSignedIn")==="1")document.querySelectorAll("[data-am-account]").forEach(function(a){a.textContent="My account"})}catch(e){}</script>
+                <a href="../../generator/website-url/index.html" class="btn btn-primary btn-sm">Create APK</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu" onclick="openMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- PWA Builder Section -->
+    <section class="pwa-builder-section generator-section">
+        <div class="container">
+            <div class="pwa-builder-header generator-header">
+                <h1>⚡ <span class="gradient-text">PWA Builder</span></h1>
+                <p>Step 2 of 5: Upload app icon and customize splash screen</p>
+            </div>
+            
+            <!-- Stepper Progress -->
+            <div class="stepper-progress">
+                <a href="../website-url/index.html" class="step-indicator completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Website URL</span>
+                </a>
+                <div class="step-connector completed"></div>
+                <a href="index.html" class="step-indicator active" data-step="2">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Icon &amp; Splash</span>
+                </a>
+                <div class="step-connector"></div>
+                <a href="../integrations/index.html" class="step-indicator" data-step="3">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Push &amp; Chat</span>
+                </a>
+                <div class="step-connector"></div>
+                <a href="../caching/index.html" class="step-indicator" data-step="4">
+                    <div class="step-number">4</div>
+                    <span class="step-label">Caching</span>
+                </a>
+                <div class="step-connector"></div>
+                <a href="../build/index.html" class="step-indicator" data-step="5">
+                    <div class="step-number">5</div>
+                    <span class="step-label">Build</span>
+                </a>
+            </div>
+            
+            <!-- Form Container -->
+            <div class="generator-wrapper">
+                <div class="generator-form-container">
+                    <div class="step-content active">
+                        <div class="step-header">
+                            <h2>🎨 Icon &amp; Splash Screen</h2>
+                            <p>Upload your app icon and customize splash screen colors</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>App Icon (512x512 PNG recommended)</label>
+                            <div class="upload-area" id="pwaUploadArea">
+                                <input type="file" id="pwaIconUpload" accept="image/*" hidden="">
+                                <div class="upload-placeholder">
+                                    <span class="upload-icon">🖼️</span>
+                                    <p>Drag &amp; drop or click to browse</p>
+                                    <p style="font-size: 12px; color: var(--text-muted);">PNG, JPG up to 5MB (optional)</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: center; margin-top: 24px;">
+                                <div id="pwaIconPreview" style="width: 128px; height: 128px; background: var(--bg-input); border: 2px solid var(--border-color); border-radius: 24px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <span style="color: var(--text-muted); font-size: 48px;">📷</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row" style="margin-top: 24px;">
+                            <div class="form-group">
+                                <label>Theme Color</label>
+                                <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                                    <input type="color" id="pwaThemeColor" value="#6366F1" style="width: 40px; height: 40px; min-width: 40px; min-height: 40px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; padding: 0; flex-shrink: 0;">
+                                    <span id="pwaThemeColorValue" style="font-family: monospace; color: var(--text-secondary); font-size: 14px;">#6366F1</span>
+                                </div>
+                                <span class="input-hint">Status bar &amp; browser chrome color</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Background Color</label>
+                                <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+                                    <input type="color" id="pwaBgColor" value="#0A0A0B" style="width: 40px; height: 40px; min-width: 40px; min-height: 40px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; padding: 0; flex-shrink: 0;">
+                                    <span id="pwaBgColorValue" style="font-family: monospace; color: var(--text-secondary); font-size: 14px;">#0A0A0B</span>
+                                </div>
+                                <span class="input-hint">Splash screen background color</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <div class="step-navigation">
+                        <button class="btn btn-secondary" id="prevBtn">
+                            ← Previous
+                        </button>
+                        <button class="btn btn-primary" id="nextBtn">
+                            Next: Push &amp; Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer compact">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 FreeWebToApk by SmartrixLabs. All rights reserved.</p>
+                <div class="footer-links-inline">
+                    <a href="../../privacy/index.html">Privacy</a>
+                    <a href="../../contact/index.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-keyword-tags">
+                <p>Related: pwa icon sizes, progressive web app icons, manifest icons generator, pwa splash screen, 
+                theme color picker, web app icons 192x192 512x512, maskable icons, app icon generator free</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/pwa-wizard-state_pbilw9.js"></script>
+    <script src="../../js/app_pbilw9.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check step 1 completed
+        if (!PWAWizardState.isStepValid(1)) {
+            window.location.href = '/pwa-builder/website-url';
+            return;
+        }
+        
+        var state = PWAWizardState.get();
+        
+        // Load saved colors
+        document.getElementById('pwaThemeColor').value = state.themeColor || '#6366F1';
+        document.getElementById('pwaThemeColorValue').textContent = state.themeColor || '#6366F1';
+        document.getElementById('pwaBgColor').value = state.backgroundColor || '#0A0A0B';
+        document.getElementById('pwaBgColorValue').textContent = state.backgroundColor || '#0A0A0B';
+        
+        // Show saved icon
+        if (state.iconData) {
+            showIconPreview(state.iconData);
+        }
+        
+        function showIconPreview(dataUrl) {
+            document.getElementById('pwaIconPreview').innerHTML = '<img src="' + dataUrl + '" alt="App Icon" style="width:100%;height:100%;object-fit:cover;">';
+        }
+        
+        // Upload handlers
+        var uploadArea = document.getElementById('pwaUploadArea');
+        var fileInput = document.getElementById('pwaIconUpload');
+        
+        uploadArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', function() {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            var file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleIconUpload(file);
+            }
+        });
+        
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files[0]) {
+                handleIconUpload(e.target.files[0]);
+            }
+        });
+        
+        function handleIconUpload(file) {
+            wtaProcessImage(file, 512, true, function(dataUrl, err) {
+                if (err) { (window.showToast || alert)(err); return; }
+                if (!PWAWizardState.set('iconData', dataUrl)) {
+                    (window.showToast || alert)('Could not save the icon. Please try a smaller image.');
+                    return;
+                }
+                PWAWizardState.set('iconOption', 'upload');
+                showIconPreview(dataUrl);
+            });
+        }
+        
+        // Color pickers
+        document.getElementById('pwaThemeColor').addEventListener('input', function(e) {
+            PWAWizardState.set('themeColor', e.target.value);
+            document.getElementById('pwaThemeColorValue').textContent = e.target.value;
+        });
+        
+        document.getElementById('pwaBgColor').addEventListener('input', function(e) {
+            PWAWizardState.set('backgroundColor', e.target.value);
+            document.getElementById('pwaBgColorValue').textContent = e.target.value;
+        });
+        
+        // Navigation
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            window.location.href = '/pwa-builder/website-url';
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            PWAWizardState.setCurrentStep(3);
+            window.location.href = '/pwa-builder/integrations';
+        });
+    });
+    </script>
+    <script src="../../js/support-chat_pbilw9.js" defer=""></script>
+
+
+</body></html>
