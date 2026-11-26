@@ -15,6 +15,19 @@ on:
           - HTML/JS
           - JS/CSS
           - HTML/CSS
+          - HTML/CSS/JS/JSON
+          - HTML/JSON
+          - HTML/CSS/JSON
+
+      app_name:
+        description: "اسم برنامه:"
+        required: true
+        type: string
+
+      icon_file:
+        description: "اسم و دامنه فایل عکس آیکون (مثال: my.jpg)"
+        required: true
+        type: string
 
       file_type:
         description: "نوع فایل همراه برنامه"
@@ -48,6 +61,8 @@ jobs:
       - name: Show settings
         run: |
           echo "Language: ${{ inputs.language }}"
+          echo "App name: ${{ inputs.app_name }}"
+          echo "Icon file: ${{ inputs.icon_file }}"
           echo "File type: ${{ inputs.file_type }}"
 
       - name: Prepare website
@@ -96,5 +111,7 @@ jobs:
         run: |
           echo "APK build completed."
           echo "Language: ${{ inputs.language }}"
+          echo "App name: ${{ inputs.app_name }}"
+          echo "Icon file: ${{ inputs.icon_file }}"
           echo "File type: ${{ inputs.file_type }}"
           
