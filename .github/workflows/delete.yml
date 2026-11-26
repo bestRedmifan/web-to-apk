@@ -1,0 +1,40 @@
+
+name: Delete All Files With Ease
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Delete all repository contents? (y/n)"
+        required: true
+        type: choice
+        options:
+          - "n"
+          - "y"
+        default: "n"
+
+permissions:
+  contents: write
+
+jobs:
+  delete:
+    if: github.event.inputs.confirm == 'y'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Delete Repository Contents
+        run: |
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' -exec rm -rf -- {} +
+
+      - name: Commit Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Delete all repository contents"
+          git push
+          
