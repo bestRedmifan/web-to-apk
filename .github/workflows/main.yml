@@ -1,0 +1,100 @@
+
+name: web to APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      language:
+        description: "از کدام زبان استفاده می‌کنید؟"
+        required: true
+        type: choice
+        options:
+          - HTML
+          - JAVASCRIPT
+          - HTML/CSS/JS
+          - HTML/JS
+          - JS/CSS
+          - HTML/CSS
+
+      file_type:
+        description: "نوع فایل همراه برنامه"
+        required: true
+        type: choice
+        options:
+          - بدون فایل
+          - فایل نمایشی
+          - فایل
+          - فایل دانلودی
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Show settings
+        run: |
+          echo "Language: ${{ inputs.language }}"
+          echo "File type: ${{ inputs.file_type }}"
+
+      - name: Prepare website
+        run: |
+          mkdir -p www
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='android/' \
+            --exclude='www/' \
+            --exclude='node_modules/' \
+            ./ www/
+
+      - name: Prepare Capacitor
+        run: |
+          npm init -y
+          npm install @capacitor/core@7 @capacitor/android@7 @capacitor/cli@7
+
+          cat > capacitor.config.json <<'EOF'
+          {
+            "appId": "com.webtoapk.app",
+            "appName": "Web to APK",
+            "webDir": "www"
+          }
+          EOF
+
+      - name: Create Android project
+        run: |
+          npx cap add android
+          npx cap sync android
+
+      - name: Build APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-to-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Build information
+        run: |
+          echo "APK build completed."
+          echo "Language: ${{ inputs.language }}"
+          echo "File type: ${{ inputs.file_type }}"
+          
