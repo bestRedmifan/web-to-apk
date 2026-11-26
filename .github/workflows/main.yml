@@ -1,0 +1,147 @@
+
+name: web to APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      language:
+        description: "از کدام زبان استفاده می‌کنید؟"
+        required: true
+        type: choice
+        options:
+          - HTML
+          - JAVASCRIPT
+          - HTML/CSS/JS
+          - HTML/JS
+          - JS/CSS
+          - HTML/CSS
+          - HTML/CSS/JS/JSON
+          - HTML/JSON
+          - HTML/CSS/JSON
+
+      app_name:
+        description: "اسم برنامه:"
+        required: true
+        type: string
+
+      icon_file:
+        description: "اسم و دامنه فایل عکس آیکون (مثال: my.jpg)"
+        required: false
+        type: string
+
+      file_type:
+        description: "نوع فایل همراه برنامه"
+        required: true
+        type: choice
+        options:
+          - بدون فایل
+          - فایل نمایشی
+          - فایل
+          - فایل دانلودی
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Show settings
+        run: |
+          echo "Language: ${{ inputs.language }}"
+          echo "App name: $APP_NAME"
+          echo "Icon file: ${ICON_FILE:-No custom icon}"
+          echo "File type: ${{ inputs.file_type }}"
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+          ICON_FILE: ${{ inputs.icon_file }}
+
+      - name: Prepare website
+        run: |
+          mkdir -p www
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='android/' \
+            --exclude='www/' \
+            --exclude='node_modules/' \
+            ./ www/
+
+      - name: Prepare Capacitor
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+        run: |
+          npm init -y
+          npm install @capacitor/core@7 @capacitor/android@7 @capacitor/cli@7
+
+          node -e '
+          const fs = require("fs");
+          fs.writeFileSync("capacitor.config.json", JSON.stringify({
+            appId: "com.webtoapk.app",
+            appName: process.env.APP_NAME,
+            webDir: "www"
+          }, null, 2));
+          '
+
+      - name: Create Android project
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+        run: |
+          npx cap add android
+          npx cap sync android
+
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          import os
+
+          path = "android/app/src/main/res/values/strings.xml"
+          tree = ET.parse(path)
+          root = tree.getroot()
+
+          app_name = os.environ["APP_NAME"]
+
+          item = root.find("string[@name='app_name']")
+
+          if item is None:
+              item = ET.SubElement(root, "string", {"name": "app_name"})
+
+          item.text = app_name
+
+          tree.write(path, encoding="utf-8", xml_declaration=True)
+          PY
+
+      - name: Build APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-to-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Build information
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+          ICON_FILE: ${{ inputs.icon_file }}
+        run: |
+          echo "APK build completed."
+          echo "Language: ${{ inputs.language }}"
+          echo "App name: $APP_NAME"
+          echo "Icon file: ${ICON_FILE:-No custom icon}"
+          echo "File type: ${{ inputs.file_type }}"
